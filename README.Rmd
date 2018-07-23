@@ -1,0 +1,38 @@
+---
+title: "README.Rmd"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(treesiftr)
+library(phangorn)
+library(alignfigR)
+library(ggtree)
+library(ggplot2)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars} 
+aln_path <- "data/bears_fasta.fa"
+bears <- read_alignment(aln_path)
+tree <- read.tree("data/starting_tree.tre")
+
+sample_df <- generate_sliding(data_set = bears, start_char = 45, stop_char = 62, steps = 4)
+
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot_vector <- generate_tree_vec(bears, sample_df, aln_path, tree)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
