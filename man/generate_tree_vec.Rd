@@ -4,7 +4,7 @@
 \alias{generate_tree_vec}
 \title{Generate a list of parsimony trees, based on subsamples from phylogenetic matrix}
 \usage{
-generate_tree_vec(data_set, start, stop, starting_tree)
+generate_tree_vec(data_set, start, stop, tree)
 }
 \arguments{
 \item{data_set}{Phylogenetic matrix}
@@ -22,5 +22,5 @@ Vector
 Generate a list of phylogenetic trees based on subsamples from phylogenetic matrix, as generated from function generate_sets. Return return a vector of plots showing the tree and the specified data.
 }
 \examples{
-tree <- generate_tree_vec(bears, 1, 2, starting_tree)
+tree <- generate_tree_vec(bears, 1, 2, tree)
 }

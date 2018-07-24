@@ -6,14 +6,14 @@
 #' @param starting_tree Starting tree for parsimony search
 #' @return Vector
 #' @examples
-#' tree <- generate_tree_vec(bears, 1, 2, starting_tree)
+#' tree <- generate_tree_vec(bears, 1, 2, tree)
 #' @export
 
-generate_tree_vec <- function(data_set, start, stop, starting_tree){
-  phy_mat <- phyDat(data_set, levels = c(0, 1, "?"), type = "USER")
-  char_set <- c(start, stop)
-  message("Generating tree for charset:", char_set)
-  small_mat <- subset(phy_mat, select=char_set)
-  tr <- optim.parsimony(tree=starting_tree, data = small_mat)
+generate_tree_vec <- function(data_set, start, stop, tree){
+  phy_mat <- phangorn::phyDat(data_set, levels = c(0, 1, "?"), type = "USER")
+  charset <- c(start, stop)
+  message("Generating tree for charset:", charset)
+  small_mat <- subset(phy_mat, select=charset)
+  tr <- phangorn::optim.parsimony(tree=tree, data = small_mat)
  return(tr)
 }

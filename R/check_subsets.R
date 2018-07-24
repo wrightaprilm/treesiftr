@@ -4,13 +4,16 @@
 #' @param phylo_mat Name of the phylogenetic matrix from which character sets will be sampled
 #' @return df
 #' @examples
-#' sample_df <- check_subs(sample_df, bears)
+#' data(bears)
+#' sample_df <- generate_sliding(data_set = bears, start_char = 45, stop_char = 62, steps = 4)
+#' sample_df <- check_subs(sample_df, phy_mat)
 #' @export
 
-check_subs <- function(data_frame, phy_mat){
-  for (i in 1:nrow(sample_df)){
+check_subs <- function(sample_df, phy_mat){
+  phy_mat <- phangorn::phyDat(phy_mat, levels = c(0, 1), type = "USER")
+  for (i in seq_len(nrow(sample_df))){
     char_set <- c(sample_df$starting_val[i], sample_df$stop_val[i])
-    small_mat <- subset(phy_mat, select=char_set)
+    small_mat <- subset(x = phy_mat, select = char_set)
     if ( any(is.na(small_mat[[1]]))){
     sample_df <- sample_df[-i, ]
     }

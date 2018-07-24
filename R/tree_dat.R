@@ -8,11 +8,11 @@
 #' @param lscore Boolean calculate and export likelihood scores for each character set
 #' @return tree Tree object with p and l scores annotated via $
 #' @examples
-#' tree <- generate_tree_vec(bears, 1, 2, starting_tree)
+#' data(bears)
+#' tree <- generate_tree_vec(bears, 1, 2, tree)
 #' @export
 
-
-tree_dat <-function(tree, phy_mat, start, stop, pscore = FALSE, lscore = FALSE, pri_score= FALSE){
+tree_dat <-function(tree, phy_mat, start, stop, pscore = FALSE, lscore = FALSE){
   phy_mat <- phyDat(phy_mat, levels = c(0, 1), type = "USER")
   char_set <- c(start, stop)
   small_mat <- subset(phy_mat, select=char_set)

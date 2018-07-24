@@ -2,7 +2,7 @@
 % Please edit documentation in R/generate_tree_vis.R
 \name{generate_tree_vis}
 \alias{generate_tree_vis}
-\title{Generate a list of parsimony trees, based on subsamples from phylogenetic matrix}
+\title{Combine trees and phylogenetic matrix data as a ggplot object}
 \usage{
 generate_tree_vis(data_frame, alignment, tree, data_set, pscore = FALSE,
   lscore = FALSE)
@@ -24,8 +24,13 @@ generate_tree_vis(data_frame, alignment, tree, data_set, pscore = FALSE,
 vector Vector of ggplot2 objects
 }
 \description{
-Generate a list of phylogenetic trees based on subsamples from phylogenetic matrix, as generated from function generate_sets. Return the input dataframe, with a column of phylogenetic trees.
+This function calls generate_tree_vec() to generate a vector of phylogenetic trees under parsimony. It then plots them alongside the phylogenetic matrix that was used to estimate the tree. Optional decorations can be added displaying parsimony and likelihood scores.
 }
 \examples{
-output_vector <- generate_tree_vis(data_frame = sample_df, alignment = aln_path, tree = tree, data_set = bears, pscore = TRUE, lscore = TRUE)
+\dontrun{
+output_vector <- generate_tree_vis(data_frame = sample_df,
+                                   alignment = aln_path, tree = tree,
+                                   data_set = bears, pscore = TRUE,
+                                   lscore = TRUE)
+}
 }

@@ -4,8 +4,7 @@
 \alias{tree_dat}
 \title{Generate likelihood and parsimony scores for each tree.}
 \usage{
-tree_dat(tree, phy_mat, start, stop, pscore = FALSE, lscore = FALSE,
-  pri_score = FALSE)
+tree_dat(tree, phy_mat, start, stop, pscore = FALSE, lscore = FALSE)
 }
 \arguments{
 \item{tree}{Exported tree from parsimony search}
@@ -27,5 +26,6 @@ tree Tree object with p and l scores annotated via $
 Generate extra data, including likelihood and parsimony scores for each tree. Export the values as tree annotation to put into the ggplot object.
 }
 \examples{
-tree <- generate_tree_vec(bears, 1, 2, starting_tree)
+data(bears)
+tree <- generate_tree_vec(bears, 1, 2, tree)
 }
