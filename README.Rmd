@@ -2,7 +2,7 @@
 title: "README.Rmd"
 output: html_document
 ---
-
+  [![Travis build status](https://travis-ci.org/wrightaprilm/treesiftr.svg?branch=master)](https://travis-ci.org/wrightaprilm/treesiftr)
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(treesiftr)

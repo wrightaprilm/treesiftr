@@ -6,7 +6,7 @@
 #' @param starting_tree Starting tree for parsimony search
 #' @return Vector
 #' @examples
-#' tree <- generate_tree_vec(bears, 1, 2, tree)
+#' tr <- generate_tree_vec(bears, 1, 2, tree)
 #' @export
 
 generate_tree_vec <- function(data_set, start, stop, tree){
