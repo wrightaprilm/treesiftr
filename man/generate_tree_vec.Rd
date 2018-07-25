@@ -4,16 +4,16 @@
 \alias{generate_tree_vec}
 \title{Generate a list of parsimony trees, based on subsamples from phylogenetic matrix}
 \usage{
-generate_tree_vec(data_set, start, stop, tree)
+generate_tree_vec(phy_mat, start, stop, tree)
 }
 \arguments{
-\item{data_set}{Phylogenetic matrix}
+\item{phy_mat}{Phylogenetic matrix}
 
 \item{start}{Which character to begin sampling characters at}
 
 \item{stop}{Which character to end sampling characters at}
 
-\item{starting_tree}{Starting tree for parsimony search}
+\item{tree}{Starting tree for parsimony search}
 }
 \value{
 Vector

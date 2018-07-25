@@ -9,6 +9,8 @@ tree_dat(tree, phy_mat, start, stop, pscore = FALSE, lscore = FALSE)
 \arguments{
 \item{tree}{Exported tree from parsimony search}
 
+\item{phy_mat}{Phylogenetic matrix}
+
 \item{start}{Which character to begin sampling characters at}
 
 \item{stop}{Which character to end sampling characters at}
@@ -16,8 +18,6 @@ tree_dat(tree, phy_mat, start, stop, pscore = FALSE, lscore = FALSE)
 \item{pscore}{Boolean calculate and export parsimony scores for each character set}
 
 \item{lscore}{Boolean calculate and export likelihood scores for each character set}
-
-\item{data_set}{Phylogenetic matrix}
 }
 \value{
 tree Tree object with p and l scores annotated via $

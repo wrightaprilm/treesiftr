@@ -1,11 +1,11 @@
 #' Combine trees and phylogenetic matrix data as a ggplot object
 #' @description  This function calls generate_tree_vec() to generate a vector of phylogenetic trees under parsimony. It then plots them alongside the phylogenetic matrix that was used to estimate the tree. Optional decorations can be added displaying parsimony and likelihood scores.
-#' @param data_frame Dataframe specifying how to subsample phylogenetic matrix
+#' @param sample_df Dataframe specifying how to subsample phylogenetic matrix
 #' @param alignment String specifying path to alignment
 #' @param tree Starting tree for parsimony analysis. Phylo object.
 #' @param phy_mat Phylogenetic matrix to be subsampled
 #' @param pscore Optional boolean specifying if you would like figures annotated with parsimony score of tree given data. Default FALSE.
-#' @param pscore Optional boolean specifying if you would like figures annotated with likelihood score of tree given data under the Mk model. Default FALSE.
+#' @param lscore Optional boolean specifying if you would like figures annotated with likelihood score of tree given data under the Mk model. Default FALSE.
 #' @return vector Vector of ggplot2 objects
 #' @examples
 #' \dontrun{

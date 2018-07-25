@@ -9,7 +9,7 @@ check_subs(sample_df, phy_mat)
 \arguments{
 \item{sample_df}{Dataframe of start and stop vals for character set genereation}
 
-\item{phylo_mat}{Name of the phylogenetic matrix from which character sets will be sampled}
+\item{phy_mat}{Name of the phylogenetic matrix from which character sets will be sampled}
 }
 \value{
 df
@@ -19,6 +19,6 @@ Generate a dataframe of start and stop values. These will determine what charact
 }
 \examples{
 data(bears)
-sample_df <- generate_sliding(data_set = bears, start_char = 45, stop_char = 62, steps = 4)
+sample_df <- generate_sliding(phy_mat = bears, start_char = 45, stop_char = 62, steps = 4)
 sample_df <- check_subs(sample_df, phy_mat)
 }

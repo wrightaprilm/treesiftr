@@ -1,3 +1,5 @@
 library(testthat)
 library(treesiftr)
+library(phangorn)
+library(ggtree)
 test_check("treesiftr")

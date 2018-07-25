@@ -8,6 +8,8 @@ generate_tree_vis(sample_df, alignment, tree, phy_mat, pscore = FALSE,
   lscore = FALSE)
 }
 \arguments{
+\item{sample_df}{Dataframe specifying how to subsample phylogenetic matrix}
+
 \item{alignment}{String specifying path to alignment}
 
 \item{tree}{Starting tree for parsimony analysis. Phylo object.}
@@ -16,9 +18,7 @@ generate_tree_vis(sample_df, alignment, tree, phy_mat, pscore = FALSE,
 
 \item{pscore}{Optional boolean specifying if you would like figures annotated with parsimony score of tree given data. Default FALSE.}
 
-\item{data_frame}{Dataframe specifying how to subsample phylogenetic matrix}
-
-\item{pscore}{Optional boolean specifying if you would like figures annotated with likelihood score of tree given data under the Mk model. Default FALSE.}
+\item{lscore}{Optional boolean specifying if you would like figures annotated with likelihood score of tree given data under the Mk model. Default FALSE.}
 }
 \value{
 vector Vector of ggplot2 objects

@@ -1,7 +1,7 @@
 #' Generate likelihood and parsimony scores for each tree.
 #' @description  Generate extra data, including likelihood and parsimony scores for each tree. Export the values as tree annotation to put into the ggplot object.
 #' @param tree Exported tree from parsimony search
-#' @param data_set Phylogenetic matrix
+#' @param phy_mat Phylogenetic matrix
 #' @param start Which character to begin sampling characters at
 #' @param stop Which character to end sampling characters at
 #' @param pscore Boolean calculate and export parsimony scores for each character set

@@ -4,16 +4,16 @@
 \alias{generate_sliding}
 \title{Generate list of character sets to visualize}
 \usage{
-generate_sliding(data_set, start_char, stop_char, steps)
+generate_sliding(phy_mat, start_char, stop_char, steps)
 }
 \arguments{
-\item{data_set}{Name of the phylogenetic matrix from which character sets will be sampled}
+\item{phy_mat}{Name of the phylogenetic matrix from which character sets will be sampled}
 
-\item{start_value}{Integer indicating where in the data set to begin generating character sets}
+\item{start_char}{Integer indicating where in the data set to begin generating character sets}
 
-\item{tree}{Integer indicating where in the data set to stop generating character sets}
+\item{stop_char}{Integer indicating where in the data set to stop generating character sets}
 
-\item{step}{Integer indicating how amny characters will be in each set}
+\item{steps}{Integer indicating how amny characters will be in each set}
 }
 \value{
 df
