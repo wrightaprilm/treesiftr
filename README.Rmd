@@ -3,6 +3,7 @@ title: "README.Rmd"
 output: html_document
 ---
   [![Travis build status](https://travis-ci.org/wrightaprilm/treesiftr.svg?branch=master)](https://travis-ci.org/wrightaprilm/treesiftr)
+    [![Coverage status](https://codecov.io/gh/wrightaprilm/treesiftr/branch/master/graph/badge.svg)](https://codecov.io/github/wrightaprilm/treesiftr?branch=master)
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(treesiftr)
@@ -18,9 +19,9 @@ Estimating phylogenetic trees is crucial in many areas of evolutionary biology.
 
 
 ```{r cars} 
-aln_path <- "bears_fasta.fa"
+aln_path <- "inst/extdata/bears_fasta.fa"
 bears <- read_alignment(aln_path)
-tree <- read.tree("data/starting_tree.tre")
+tree <- read.tree("inst/extdata/starting_tree.tre")
 
 sample_df <- generate_sliding(data_set = bears, start_char = 45, stop_char = 62, steps = 4)
 
@@ -31,7 +32,11 @@ sample_df <- generate_sliding(data_set = bears, start_char = 45, stop_char = 62,
 You can also embed plots, for example:
 
 ```{r pressure, echo=FALSE}
-plot_vector <- generate_tree_vec(bears, sample_df, aln_path, tree)
+output_vector <- generate_tree_vis(data_frame = sample_df,
+                                    alignment = aln_path, tree = tree,
+                                    data_set = bears, pscore = TRUE,
+                                    lscore = TRUE)
+output_vector
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

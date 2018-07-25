@@ -1,3 +1,6 @@
+library(ggplot2)
+library(ggtree)
+library(phangorn)
 test_that("Test generate_tree_vec(data_set, start, stop, tree)", {
   data(bears)
   sample_df <- generate_sliding(bears, 1, 10, 1)

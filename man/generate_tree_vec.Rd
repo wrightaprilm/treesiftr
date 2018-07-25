@@ -22,5 +22,5 @@ Vector
 Generate a list of phylogenetic trees based on subsamples from phylogenetic matrix, as generated from function generate_sets. Return return a vector of plots showing the tree and the specified data.
 }
 \examples{
-tree <- generate_tree_vec(bears, 1, 2, tree)
+tr <- generate_tree_vec(bears, 1, 2, tree)
 }

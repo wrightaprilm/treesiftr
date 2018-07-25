@@ -4,7 +4,7 @@
 \alias{generate_tree_vis}
 \title{Combine trees and phylogenetic matrix data as a ggplot object}
 \usage{
-generate_tree_vis(data_frame, alignment, tree, data_set, pscore = FALSE,
+generate_tree_vis(sample_df, alignment, tree, phy_mat, pscore = FALSE,
   lscore = FALSE)
 }
 \arguments{
@@ -12,11 +12,11 @@ generate_tree_vis(data_frame, alignment, tree, data_set, pscore = FALSE,
 
 \item{tree}{Starting tree for parsimony analysis. Phylo object.}
 
-\item{data_set}{Phylogenetic matrix to be subsampled}
+\item{phy_mat}{Phylogenetic matrix to be subsampled}
 
 \item{pscore}{Optional boolean specifying if you would like figures annotated with parsimony score of tree given data. Default FALSE.}
 
-\item{sample_df}{Dataframe specifying how to subsample phylogenetic matrix}
+\item{data_frame}{Dataframe specifying how to subsample phylogenetic matrix}
 
 \item{pscore}{Optional boolean specifying if you would like figures annotated with likelihood score of tree given data under the Mk model. Default FALSE.}
 }
@@ -28,9 +28,9 @@ This function calls generate_tree_vec() to generate a vector of phylogenetic tre
 }
 \examples{
 \dontrun{
-output_vector <- generate_tree_vis(data_frame = sample_df,
+output_vector <- generate_tree_vis(sample_df = sample_df,
                                    alignment = aln_path, tree = tree,
-                                   data_set = bears, pscore = TRUE,
+                                   phy_mat = bears, pscore = TRUE,
                                    lscore = TRUE)
 }
 }

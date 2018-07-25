@@ -7,7 +7,7 @@
 check_subs(sample_df, phy_mat)
 }
 \arguments{
-\item{data_frame}{Dataframe of start and stop vals for character set genereation}
+\item{sample_df}{Dataframe of start and stop vals for character set genereation}
 
 \item{phylo_mat}{Name of the phylogenetic matrix from which character sets will be sampled}
 }
