@@ -4,5 +4,7 @@ language: R
 sudo: false
 cache: packages
 use_bioc: true
+install:
+  - ./travis-tool.sh install_bioc ggtree
 after_success:
     - Rscript -e 'covr::codecov()'
