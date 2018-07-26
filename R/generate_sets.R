@@ -12,8 +12,8 @@
 generate_sliding <- function(phy_mat, start_char, stop_char, steps){
   maximum_len <- length(phy_mat[[1]])
 
-  starts <- seq(start_char, stop_char, steps)
-  stops <- starts + 1
+  starts <- seq(start_char, stop_char)
+  stops <- starts + steps
 
   starts_name <- "starting_val"
   stops_name <- "stop_val"
