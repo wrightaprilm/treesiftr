@@ -5,5 +5,8 @@ sudo: false
 cache: packages
 bioc_required: yes
 use_bioc: yes
+r_packages:
+- covr
+- testthat
 after_success:
     - Rscript -e 'covr::codecov()'
