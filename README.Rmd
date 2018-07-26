@@ -2,8 +2,19 @@
 title: "README.Rmd"
 output: html_document
 ---
+  ![logo](inst/images/treesiftR.png)
   [![Travis build status](https://travis-ci.org/wrightaprilm/treesiftr.svg?branch=master)](https://travis-ci.org/wrightaprilm/treesiftr)
     [![Coverage status](https://codecov.io/gh/wrightaprilm/treesiftr/branch/master/graph/badge.svg)](https://codecov.io/github/wrightaprilm/treesiftr?branch=master)
+
+## Introduction
+
+Estimating phylogenetic trees is crucial in many areas of evolutionary biology.
+However, visualizing the relationship between data and trees is not intutive [@baumTT]. To assist with visualizing this relationship, I have created treesiftR, 
+an R package that takes subsets of data from a phylogenetic matrix, generates a tree
+under parsimony, and scores that tree under both the likelihood and parsimony criteria. The output of the package is a visualization or set of visualizations 
+of a tree and characters. Also included is a Shiny application that can be run locally or used via the web without installing any R packages or having knowledge of R.
+
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(treesiftr)
@@ -13,17 +24,14 @@ library(ggtree)
 library(ggplot2)
 ```
 
-## Introduction
-
-Estimating phylogenetic trees is crucial in many areas of evolutionary biology.
 
 
-```{r cars} 
+```{r message=FALSE} 
 aln_path <- "inst/extdata/bears_fasta.fa"
 bears <- read_alignment(aln_path)
 tree <- read.tree("inst/extdata/starting_tree.tre")
 
-sample_df <- generate_sliding(data_set = bears, start_char = 45, stop_char = 62, steps = 4)
+sample_df <- generate_sliding(bears, start_char = 1, stop_char = 10, steps = 1)
 
 ```
 
@@ -31,12 +39,13 @@ sample_df <- generate_sliding(data_set = bears, start_char = 45, stop_char = 62,
 
 You can also embed plots, for example:
 
-```{r pressure, echo=FALSE}
-output_vector <- generate_tree_vis(data_frame = sample_df,
-                                    alignment = aln_path, tree = tree,
-                                    data_set = bears, pscore = TRUE,
-                                    lscore = TRUE)
+```{r pressure, echo=FALSE, message=FALSE}
+output_vector <- generate_tree_vis(sample_df = sample_df, alignment = aln_path, 
+                                   tree = tree, phy_mat = bears, pscore = TRUE,
+                                   lscore = TRUE)
 output_vector
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+## References

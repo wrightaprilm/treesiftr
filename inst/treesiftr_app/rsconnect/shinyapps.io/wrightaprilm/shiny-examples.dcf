@@ -1,0 +1,10 @@
+name: shiny-examples
+title:
+username:
+account: wrightaprilm
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 388413
+bundleId: 1502163
+url: https://wrightaprilm.shinyapps.io/shiny-examples/
+when: 1532625103.9277
