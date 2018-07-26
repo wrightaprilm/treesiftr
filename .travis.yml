@@ -8,7 +8,5 @@ use_bioc: yes
 r_packages:
 - covr
 - testthat
-install:
-- ./travis-tool.sh install_r testthat
 after_success:
     - Rscript -e 'covr::codecov()'
