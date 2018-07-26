@@ -1,7 +1,7 @@
 library(ggplot2)
 library(ggtree)
 library(phangorn)
-#library(Biostrings)
+library(Biostrings)
 test_that("Test generate_tree_vis(data_frame, alignment, tree, pscore, lscore)", {
   data(bears)
   aln_path = "testdata/bears_fasta.fa"

@@ -17,6 +17,7 @@ Suggests:
     knitr,
     testthat,
     rmarkdown,
+    Biostrings,
     covr
 Encoding: UTF-8
 LazyData: true
