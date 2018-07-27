@@ -19,12 +19,13 @@ tree_dat <-function(tree, phy_mat, start, stop, pscore = FALSE, lscore = FALSE){
   if (pscore == TRUE){
    p_score <- fitch(tree, small_mat)
    tree$pars <- p_score
+   message("pscore ",char_set, p_score)
+
    }
   if (lscore == TRUE){
     tree <- multi2di(tree)
-    tree <- acctran(tree, data = small_mat)
+   tree <- acctran(tree, data = small_mat)
     fit = pml(tree, data = small_mat)
-    print(fit)
     tree$lik <- fit$logLik
   }
   return(tree)

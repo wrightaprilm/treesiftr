@@ -16,16 +16,37 @@ server <- function(input, output) {
   # 1. It is "reactive" and therefore should be automatically
   #    re-executed when inputs (input$bins) change
   # 2. Its output type is a plot
-  data(bears)
+
+
   output$treeAlign <- renderPlot({
   aln_path = "data/bears_fasta.fa"
-  sample_df = generate_sliding(bears, input$min_val, input$max_val, input$steps)
-  generate_tree_vis(sample_df = sample_df, alignment = aln_path,
-                           tree = tree, phy_mat = bears, pscore = input$pscore,
-                            lscore = input$lscore
-                     )
+  sample_df = generate_sliding(bears, input$min_val, input$min_val + 1,
+                               input$step_val)
+  vis_vec <- generate_tree_vis(sample_df = sample_df, alignment = aln_path, tree = tree, phy_mat = bears, pscore = input$pscore, lscore = input$lscore)
+ for (i in 1:length(vis_vec)){
+    print(vis_vec[i])
+    if (input$goButton) {
+      if (i+1 == length(vis_vec)){
+        validate(
+          need(i+1 == length(vis_vec), "Reached end of plots")
+        )
+      } else {
+      print(vis_vec[i+1])
+      i <- i +1
+      }
+    if (input$backButton){
+      if (i-1 == 0){
+        validate(
+          need(i-1 == 0, "At zero index")
+        )
+      }else {
+        print(vis_vec[i-1])
+        i <- i - 1
+      }
+    }
+    }
 
-  })
+  }
 
+})
 }
-

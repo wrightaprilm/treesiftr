@@ -17,15 +17,17 @@ generate_sliding <- function(phy_mat, start_char, stop_char, steps){
 
   starts_name <- "starting_val"
   stops_name <- "stop_val"
+  step_name <- "step_val"
+
 
   if ((tail(stops, n=1) >= maximum_len) == TRUE){
     stops <- head(stops, -1)
     starts <- head(starts, -1)
-    sample_df <- data.frame(starts, stops)
-    names(sample_df) <- c(starts_name,stops_name)
+    sample_df <- data.frame(starts, stops, steps)
+    names(sample_df) <- c(starts_name,stops_name, step_name)
     } else {
-    sample_df <- data.frame(starts, stops)
-    names(sample_df) <- c(starts_name,stops_name)
+    sample_df <- data.frame(starts, stops, steps)
+    names(sample_df) <- c(starts_name,stops_name, step_name)
   }
   return(sample_df)
 }

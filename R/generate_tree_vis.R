@@ -25,25 +25,24 @@ generate_tree_vis <- function(sample_df, alignment, tree, phy_mat,
     char_set <- c(sample_df$starting_val[i], sample_df$stop_val[i])
     tr <- as.phylo(generate_tree_vec(phy_mat, sample_df$starting_val[i],
                                      sample_df$stop_val[i], tree))
-    pl <- ggtree::msaplot(p=ggtree(tr), fasta=alignment, window=  char_set,                                    width = .1, offset = 9 ) + geom_tiplab() +
-                          ggtitle(char_set)
-
+    pl <- ggtree::msaplot(p=ggtree(tr), fasta=alignment, window = char_set,                                    width = .1, offset = 9 ) + geom_tiplab() +
+                          ggtitle(paste0(sample_df$starting_val[i],"\n",sample_df$stop_val[i]))
     if (pscore == TRUE) {
         tr <- tree_dat(tr, phy_mat, sample_df$starting_val[i], sample_df$stop_val[i],                      pscore = TRUE)
         ps <- as.character(tr$pars)
         plab <- paste("PScore ", ps)
         print(char_set)
-        pl <- pl + ggtitle(paste0(char_set[1],"\n",char_set[2], "\n", plab))
+        pl <- pl + ggtitle(paste0(sample_df$starting_val[i],"\n",sample_df$stop_val[i], "\n", plab))
     }
     if (lscore == TRUE) {
       tr <- tree_dat(tr, phy_mat, sample_df$starting_val[i],
                      sample_df$stop_val[i], lscore = TRUE)
       l <- as.character(tr$lik)
       lab <- paste("LScore under Mk model ", l)
-      pl <- pl + ggtitle(paste0(char_set[1],"\n",char_set[2], "\n", lab))
+      pl <- pl + ggtitle(paste0(sample_df$starting_val[i],"\n",sample_df$stop_val[i], "\n", lab))
     }
     if (lscore & pscore == TRUE) {
-      pl <- pl + ggtitle(paste0(char_set[1],"\n",char_set[2], "\n", lab,
+      pl <- pl + ggtitle(paste0(sample_df$starting_val[i],"\n",sample_df$stop_val[i], "\n", lab,
                                 "\n", plab))
     }
     vis_vec[[i]] <- pl

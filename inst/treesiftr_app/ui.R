@@ -14,25 +14,17 @@ ui <- fluidPage(
     sidebarPanel(
 
       # Input: Slider for the number of bins ----
-      sliderInput(inputId = "min_val",
+      numericInput(inputId = "min_val",
                   label = "First character to visualize:",
                   min = 1,
                   max = 61,
                   value = 3),
+      numericInput(inputId = "step_val",
+                   label = "Number to visualize (max 5):",
+                   min = 1,
+                   max = 5,
+                   value = 3),
 
-
-    sliderInput(inputId = "max_val",
-                label = "Last character to visualize:",
-                min = 1,
-                max = 62,
-                value = 5),
-
-
-  sliderInput(inputId = "steps",
-              label = "Step size (how many characters to plot at once",
-              min = 0,
-              max = 62,
-              value = 2),
 
   checkboxInput(inputId = "pscore",
                 label = "Do you want to print the parsimony score?",
@@ -42,7 +34,10 @@ ui <- fluidPage(
                 label = "Do you want to print the likelihood score under the Mk
                         model?",
                 value = FALSE,
-                width = NULL)
+                width = NULL),
+
+  sidebarPanel(actionButton("goButton", "next")),
+  sidebarPanel(actionButton("backButton", "previous"))
 
 ),
 
@@ -54,4 +49,5 @@ ui <- fluidPage(
     )
   )
 )
+
 
