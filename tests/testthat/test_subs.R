@@ -3,6 +3,6 @@ test_that("Test generate_sliding(sample_df, phy_mat)", {
   expect_is(sample_df, "data.frame")
   a <-dim(sample_df)
   expect_equal(a[1], 10)
-  expect_equal(a[2], 2)
+  expect_equal(a[2], 3)
 })
 

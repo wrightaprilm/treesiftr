@@ -10,5 +10,5 @@ test_that("Test generate_tree_vis(data_frame, alignment, tree, pscore, lscore)",
                            tree = tree, phy_mat = bears)
     testthat::expect_equal(length(vec), 10)
     expect_equal(length(vec[[1]]$layers), 5)
-    expect_is(vec[[1]]$labels$title, "numeric")
+    expect_is(vec[[1]]$labels$title, "character")
 })
