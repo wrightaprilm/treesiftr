@@ -1,4 +1,5 @@
 library(shiny)
+library(treesiftr)
 
 data(bears)
 # Define UI for app that draws a histogram ----
@@ -21,7 +22,7 @@ ui <- fluidPage(
                   value = 3),
       numericInput(inputId = "step_val",
                    label = "Number to visualize (max 5):",
-                   min = 1,
+                   min = 2,
                    max = 5,
                    value = 3),
 
@@ -34,11 +35,7 @@ ui <- fluidPage(
                 label = "Do you want to print the likelihood score under the Mk
                         model?",
                 value = FALSE,
-                width = NULL),
-
-  sidebarPanel(actionButton("goButton", "next")),
-  sidebarPanel(actionButton("backButton", "previous"))
-
+                width = NULL)
 ),
 
     # Main panel for displaying outputs ----
