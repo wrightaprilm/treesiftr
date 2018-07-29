@@ -1,5 +1,11 @@
 library(shiny)
 library(treesiftr)
+library(ggtree)
+library(ggplot2)
+library(alignfigR)
+library(Biostrings)
+library(phangorn)
+
 
 data(bears)
 # Define UI for app that draws a histogram ----
