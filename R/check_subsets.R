@@ -13,7 +13,7 @@ check_subs <- function(sample_df, phy_mat){
   phy_mat <- phangorn::phyDat(phy_mat, levels = c(0, 1), type = "USER")
   for (i in 1:nrow(sample_df)){
     char_set <- c(sample_df$starting_val[i], sample_df$stop_val[i])
-    small_mat <- subset(x = phy_mat, select = char_set)
+    small_mat <- subset(x = phy_mat, select = char_set, site.pattern=FALSE)
     if ( any(is.na(small_mat[[1]]))){
     sample_df <- sample_df[-i, ]
     }
