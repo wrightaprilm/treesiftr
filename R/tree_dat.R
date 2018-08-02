@@ -17,6 +17,8 @@ tree_dat <-function(tree, phy_mat, start, stop, pscore = FALSE, lscore = FALSE){
   char_set <- c(start, stop)
   small_mat <- subset(phy_mat, select=char_set)
   if (pscore == TRUE){
+  tree <- multi2di(tree, random = TRUE)
+
    p_score <- fitch(tree, small_mat)
    tree$pars <- p_score
    message("pscore ",char_set, p_score)
