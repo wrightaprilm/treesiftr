@@ -15,7 +15,7 @@
 tree_dat <-function(tree, phy_mat, start, stop, pscore = FALSE, lscore = FALSE){
   phy_mat <- phyDat(phy_mat, levels = c(0, 1), type = "USER")
   char_set <- c(start, stop)
-  small_mat <- subset(phy_mat, select=char_set)
+  small_mat <- subset(phy_mat, select=char_set, site.pattern=FALSE)
   if (pscore == TRUE){
   tree <- multi2di(tree, random = TRUE)
 
