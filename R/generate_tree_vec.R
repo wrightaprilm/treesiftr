@@ -18,5 +18,8 @@ generate_tree_vec <- function(phy_mat, start, stop, tree){
   tr <- phangorn::optim.parsimony(tree=tree, data = small_mat)
   p_score <- fitch(tr, small_mat)
   tr$pars2 <- p_score
+  p_tr <- acctran(tr, data = small_mat)
+  fit <- pml(p_tr, data = small_mat)
+  tr$lik <- fit$logLik
   return(tr)
 }

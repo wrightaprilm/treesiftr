@@ -28,14 +28,14 @@ generate_tree_vis <- function(sample_df, alignment, tree, phy_mat,
     pl <- ggtree::msaplot(p=ggtree(tr), fasta=alignment, window = char_set,                                    width = .1, offset = 9 ) + geom_tiplab() +
                           ggtitle(paste0(char_set[1],"\n",char_set[2]))
     if (pscore == TRUE) {
-        tr <- tree_dat(tr, phy_mat, sample_df$starting_val[i], sample_df$stop_val[i],                      pscore = TRUE)
+#        tr <- tree_dat(tr, phy_mat, sample_df$starting_val[i], sample_df$stop_val[i],                      pscore = TRUE)
         ps <- as.character(tr$pars2)
         plab <- paste("PScore ", ps)
         pl <- pl + ggtitle(paste0(char_set[1],"\n",char_set[2], "\n", plab))
     }
     if (lscore == TRUE) {
-      tr <- tree_dat(tr, phy_mat, sample_df$starting_val[i],
-                     sample_df$stop_val[i], lscore = TRUE)
+#      tr <- tree_dat(tr, phy_mat, sample_df$starting_val[i],
+#                     sample_df$stop_val[i], lscore = TRUE)
       l <- as.character(tr$lik)
       lab <- paste("LScore under Mk model ", l)
       pl <- pl + ggtitle(paste0(char_set[1],"\n",char_set[2], "\n", lab))

@@ -18,15 +18,10 @@ tree_dat <-function(tree, phy_mat, start, stop, pscore = FALSE, lscore = FALSE){
   char_set <- c(start, stop)
   small_mat <- subset(phy_mat, select=charset[1]:charset[2],
                       site.pattern = FALSE)
-  if (pscore == TRUE){
-  tree <- multi2di(tree, random = TRUE)
-   p_score <- fitch(tree, small_mat)
-   tree$pars <- p_score
-   }
   if (lscore == TRUE){
     tree <- multi2di(tree)
-   tree <- fitch(tree, data = small_mat)
-    fit = pml(tree, data = small_mat)
+    tree <- acctran(tree, data = small_mat)
+    fit <- pml(tree, data = small_mat)
     tree$lik <- fit$logLik
   }
   return(tree)
