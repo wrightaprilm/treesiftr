@@ -14,19 +14,18 @@
 
 tree_dat <-function(tree, phy_mat, start, stop, pscore = FALSE, lscore = FALSE){
   phy_mat <- phyDat(phy_mat, levels = c(0, 1), type = "USER")
+  stop <- stop + 1
   char_set <- c(start, stop)
-  small_mat <- subset(phy_mat, select=char_set, site.pattern=FALSE)
+  small_mat <- subset(phy_mat, select=charset[1]:charset[2],
+                      site.pattern = FALSE)
   if (pscore == TRUE){
   tree <- multi2di(tree, random = TRUE)
-
    p_score <- fitch(tree, small_mat)
    tree$pars <- p_score
-   message("pscore ",char_set, p_score)
-
    }
   if (lscore == TRUE){
     tree <- multi2di(tree)
-   tree <- acctran(tree, data = small_mat)
+   tree <- fitch(tree, data = small_mat)
     fit = pml(tree, data = small_mat)
     tree$lik <- fit$logLik
   }

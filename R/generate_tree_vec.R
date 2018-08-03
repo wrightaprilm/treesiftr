@@ -10,10 +10,13 @@
 #' @export
 
 generate_tree_vec <- function(phy_mat, start, stop, tree){
-  phy_mat <- phangorn::phyDat(phy_mat, levels = c(0, 1, "?"), type = "USER")
+  phy_mat <- phangorn::phyDat(phy_mat, levels = c(0, 1), type = "USER")
   charset <- c(start, stop)
   message("Generating tree for charset:", charset)
-  small_mat <- subset(phy_mat, select=charset, site.pattern=FALSE)
+  small_mat <- subset(phy_mat, select=charset[1]:charset[2],
+                      site.pattern=FALSE)
   tr <- phangorn::optim.parsimony(tree=tree, data = small_mat)
- return(tr)
+  p_score <- fitch(tr, small_mat)
+  tr$pars2 <- p_score
+  return(tr)
 }

@@ -19,7 +19,7 @@
 generate_tree_vis <- function(sample_df, alignment, tree, phy_mat,
                               pscore = FALSE, lscore = FALSE){
   vis_vec <- list()
-  phy_mat <- phyDat(phy_mat, levels = c(0, 1, "?"), type = "USER")
+  phy_mat <- phyDat(phy_mat, levels = c(0, 1), type = "USER")
   sample_df <- check_subs(sample_df = sample_df, phy_mat = phy_mat)
   for (i in 1:nrow(sample_df)){
     char_set <- c(sample_df$starting_val[i], sample_df$stop_val[i])
@@ -29,9 +29,8 @@ generate_tree_vis <- function(sample_df, alignment, tree, phy_mat,
                           ggtitle(paste0(char_set[1],"\n",char_set[2]))
     if (pscore == TRUE) {
         tr <- tree_dat(tr, phy_mat, sample_df$starting_val[i], sample_df$stop_val[i],                      pscore = TRUE)
-        ps <- as.character(tr$pars)
+        ps <- as.character(tr$pars2)
         plab <- paste("PScore ", ps)
-        print(char_set)
         pl <- pl + ggtitle(paste0(char_set[1],"\n",char_set[2], "\n", plab))
     }
     if (lscore == TRUE) {
