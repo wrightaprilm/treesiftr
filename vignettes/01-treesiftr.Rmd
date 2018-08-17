@@ -1,0 +1,47 @@
+---
+title: "treesifter"
+output: html_document
+---
+# Introduction
+
+treesiftr is a [Shiny application](https://wrightaprilm.shinyapps.io/treesiftr_app/) for visualizing the relationship between phylogenetic trees and phylogenetic data. Phylogenetic trees are crucial to the study of comparative biology, taxonomy, and evolution. However, understanding how to read a phylogenetic tree, and how a phylogenetic tree relates to underlying phylogenetic data, remain challenging.
+
+In today's lab exercise, we will learn about a phylogenetic matrix, and then use the data in the matrix to visualize a phylogenetic tree.
+
+## The fossil bear matrix
+
+The data matrix included with treesiftr is a matrix of binary ("0" and "1") characters compiled to estimate a topology of living and extinct bear species [@abella12]. This matrix is fairly typical in size for a paleontological matrix, comprising 62 characters. It is, however, atypically complete, with only 18% missing data. In the following exercises, missing data will be represented by a thin black line. The "0" state will be represented in pale blue, and the "1" in brown.
+
+## treesiftr
+
+Navigate to the [treesiftr application](https://wrightaprilm.shinyapps.io/treesiftr_app/).
+
+On the left-hand side of the interface, there are two places for numeric input. One controls where in the matrix to start visualizing characters. For example, entering character "6" will tell treesiftr to begin visualizing from the 6th character in a matrix. The input below tells treesiftr how many characters to visualize at the tips of the tree. The minimum is two. The start and end points of character visualizations are noted in the upper left-hand corner of the visualization.
+
+There are also two checkboxes. Leave these unchecked until otherwise noted.
+
+treesiftr works by subsetting a phylogenetic matrix by user input. Then, a parsimony tree is constructed in Phangorn from the user-defined subset. The tree is scored under both parsimony and Lewis' Mk model for discrete character data. The data and tree are then visualized using ggtree, based upon the ggplot2 package. This application makes use of Shiny to provide a graphical interface, but there is a second included tutorial for more experienced users of the R statistical language.
+
+## Parsimony Questions
+
+1. Visualize characters 1 and 2. What is the parsimony score for this character set. Click "Do you want to print the parsimony score?" in the infterface to check your answer.
+
+2. Visualize characters 2 and 3. What monophyletic group from tree 1 is no longer on this tree? Click below for the answer
+
+3. What is the parsimony score of the 31-34 character set? Click "Do you want to print the parsimony score?" in the infterface to check your answer.
+ 
+4. Which character, 8, 9 or 10, represents a reveral?
+
+5. What information would we need to decide if the "1" state possesed by _Zaragocyon_daamsi_ is an autapomorphy? 
+
+6. Click the switch that says "Do you want to print the likelihood score under the Mk model?" _and_ the switch that says "Do you want to print the parsimony score?". Do all characters with the same parsimony score have the same likelihood score? 
+
+7. Compare characters 46-49 and 47-50. Why does set 47-50 have a better likelihood than 46-49? 
+
+8. What is the relationship between the likelihood score and increasing the number of characters visualized? 
+
+9. What is the minimum number adding a character can add to the parsimony score?
+
+10. These trees are fully resolved. Based on your exploration of the data, does this degree of resolution make sense?
+
+

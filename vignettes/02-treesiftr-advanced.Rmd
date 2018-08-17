@@ -1,0 +1,129 @@
+---
+title: "treesifter advanced"
+output: html_document
+---
+
+# Introduction
+
+treesiftr is an R package for visualizing the relationship between phylogenetic 
+trees and phylogenetic data. Phylogenetic trees are crucial to the study of 
+comparative biology, taxonomy, and evolution. However, understanding how to read 
+a phylogenetic tree, and how a phylogenetic tree relates to underlying 
+phylogenetic data, remain challenging.
+
+In today's lab exercise, we will learn about the data in a phylogenetic matrix,
+and then use these data in the matrix to visualize a phylogenetic tree.
+
+## The fossil bear matrix
+
+The data matrix included with treesiftr is a matrix of binary ("0" and "1") 
+characters compiled to estimate a topology of living and extinct bear species [@abella12]. This matrix is fairly typical in size for a paleontological matrix, comprising 62 characters. It is, however, atypically complete, with only 18% 
+missing data. In the following exercises, missing data will be represented by 
+a thin black line. The "0" state will be represented in pale blue, and the "1" 
+in brown.
+
+## treesiftr
+
+treesiftr works by subsetting a phylogenetic matrix by user input. Then, a 
+parsimony tree is constructed in Phangorn from the user-defined subset. The 
+tree is scored under both parsimony and Lewis' Mk model for discrete character 
+data. The data and tree are then visualized using ggtree, based upon the ggplot2 package. This application makes use of Shiny to provide a graphical interface, 
+but there is a second included tutorial for more experienced users of the R 
+statistical language.
+
+## Installation
+
+Currently, treesiftr can be installed via the devtools ```install_github```
+function. 
+
+```{r}
+devtools::install_github("wrightaprilm/treesiftr")
+```
+
+## Loading required packages
+
+treesiftr has a number of required packages. Install and load the below. 
+
+```{r setup, include=FALSE}
+library(treesiftr)
+library(treesiftr)
+library(phangorn)
+library(alignfigR)
+library(ggtree)
+library(ggplot2)
+```
+
+## Subsetting the phylogenetic matrix
+
+The first step to making a treesiftr visualization is to select the subset of 
+the phylogenetic matrix that we would like to visualize. This is performed via a function called ```generate_sliding```. The below command will subset the  
+
+```{r message=FALSE} 
+aln_path <- "data/bears_fasta.fa"
+bears <- read_alignment(aln_path)
+tree <- read.tree("data/starting_tree.tre")
+
+sample_df <- generate_sliding(bears, start_char = 1, stop_char = 5, steps = 1)
+```
+
+The result of this is a dataframe, shown below:
+
+```{r}
+sample_df
+```
+This dataframe dispays the start character (the first character that will be visualized) and stop character (the final character that will be visualized). 
+
+We can then build trees from each subset:
+
+```{r message=FALSE}
+output_vector <- generate_tree_vis(sample_df = sample_df, alignment =                                         aln_path, tree = tree, phy_mat = bears)
+output_vector
+```
+
+Phangorn requires a starting tree to estimate a parsimony tree. We specify the 
+tree we read in earlier for this purpose. ```pscore``` and ```lscore``` are 
+optional arguments to view the parsimony and likelihood scores of the estimated 
+trees. Remove these arguments before trying the exercises below.
+
+## Questions
+
+1. Visualize characters 1 and 2. What is the parsimony score for this character 
+set. Add the parismony score to the visual like so:
+
+```{r message=FALSE}
+output_vector <- generate_tree_vis(sample_df = sample_df, alignment =                                         aln_path, tree = tree, phy_mat = bears,
+                            p_score = TRUE)
+output_vector
+```
+
+2. Visualize characters 2 and 3. What monophyletic group from tree 1 is no 
+longer on this tree? 
+
+3. What is the parsimony score of the 31-34 character set? Click "Do you want to 
+print the parsimony score?" in the infterface to check your answer.
+ 
+4. Which character, 8, 9 or 10, represents a reveral?
+
+5. What information would we need to decide if the "1" state possesed by _Zaragocyon_daamsi_ is an autapomorphy? 
+
+6.  Do all characters with the same parsimony score have the same likelihood 
+score? You can add the likelihood score to the visualization like so:
+
+```{r message=FALSE}
+output_vector <- generate_tree_vis(sample_df = sample_df, alignment =                                                     aln_path, tree = tree, phy_mat = bears, 
+                                   pscore = TRUE, lscore = TRUE)
+output_vector
+```
+
+7. Compare characters 46-49 and 47-50. Why does set 47-50 have a better 
+likelihood than 46-49? 
+
+8. What is the relationship between the likelihood score and increasing the 
+number of characters visualized? 
+
+9. What is the minimum number adding a character can add to the parsimony score?
+
+10. These trees are fully resolved. Based on your exploration of the data, does 
+this degree of resolution make sense?
+
+
