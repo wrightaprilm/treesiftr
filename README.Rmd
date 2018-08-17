@@ -48,11 +48,13 @@ the phylogenetic matrix that we would like to visualize. This is performed via a
 
 ```{r message=FALSE,  warning=FALSE} 
 # Locate package data
-fdir <- system.file("extdata", package = "treesiftr") 
+```{r message=FALSE} 
+fdir <- system.file("extdata", package = "treesiftr")
 aln_path <- file.path(fdir, "bears_fasta.fa")
 bears <- read_alignment(aln_path)
-# Read in a starting phylogenetic tree
 tree <- read.tree(file.path(fdir, "starting_tree.tre"))
+
+sample_df <- generate_sliding(bears, start_char = 1, stop_char = 10, steps = 1)
 
 # Generate our list of dataframe subsets
 sample_df <- generate_sliding(bears, start_char = 1, stop_char = 5, steps = 1)
