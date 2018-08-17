@@ -27,9 +27,10 @@ library(ggplot2)
 
 
 ```{r message=FALSE} 
-aln_path <- "inst/extdata/bears_fasta.fa"
+fdir <- system.file("extdata", package = "treesiftr")
+aln_path <- file.path(fdir, "bears_fasta.fa")
 bears <- read_alignment(aln_path)
-tree <- read.tree("inst/extdata/starting_tree.tre")
+tree <- read.tree(file.path(fdir, "starting_tree.tre"))
 
 sample_df <- generate_sliding(bears, start_char = 1, stop_char = 10, steps = 1)
 
