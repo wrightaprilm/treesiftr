@@ -1,12 +1,18 @@
 ---
 title: "treesifter"
 output: html_document
+bibliography: ../bibliography.bib
 ---
 # Introduction
 
-treesiftr is a [Shiny application](https://wrightaprilm.shinyapps.io/treesiftr_app/) for visualizing the relationship between phylogenetic trees and phylogenetic data. Phylogenetic trees are crucial to the study of comparative biology, taxonomy, and evolution. However, understanding how to read a phylogenetic tree, and how a phylogenetic tree relates to underlying phylogenetic data, remain challenging.
+[treesiftr](https://wrightaprilm.shinyapps.io/treesiftr_app/) is a Shiny application [@shiny] for visualizing the relationship between phylogenetic trees and phylogenetic data. Phylogenetic trees are crucial to the study of comparative biology, taxonomy, and evolution. However, understanding how to read a phylogenetic tree, and how a phylogenetic tree relates to underlying phylogenetic data, remain challenging.
 
 In today's lab exercise, we will learn about a phylogenetic matrix, and then use the data in the matrix to visualize a phylogenetic tree.
+
+> *Tip*
+>
+> Linked text goes to the glossary. If you see a term you don't recognize, remember
+> you can refresh your memory at the bottom of this worksheet!
 
 ## The fossil bear matrix
 
@@ -16,23 +22,27 @@ The data matrix included with treesiftr is a matrix of binary ("0" and "1") char
 
 Navigate to the [treesiftr application](https://wrightaprilm.shinyapps.io/treesiftr_app/).
 
-On the left-hand side of the interface, there are two places for numeric input. One controls where in the matrix to start visualizing characters. For example, entering character "6" will tell treesiftr to begin visualizing from the 6th character in a matrix. The input below tells treesiftr how many characters to visualize at the tips of the tree. The minimum is two. The start and end points of character visualizations are noted in the upper left-hand corner of the visualization.
+treesiftr works by subsetting a phylogenetic matrix using the `start` 
+and `step` arguments. These are found on the left-hand side of the screen.
+The `start` argument controls where in the matrix you would like to begin visualizing characters. For example, a start value of 1 would indicate to begin visualizing characters from the first character in the matrix. The `step` value indicates how 
+many characters at once to visualize. A step value of three would indicate characters 
+should be viewed in threes. For example, if `start` = 1 and step = `3`, the visualization will show characters 1, 2, and 3. The start and end points of character visualizations are noted in the upper left-hand corner of the visualization.
 
 There are also two checkboxes. Leave these unchecked until otherwise noted.
 
-treesiftr works by subsetting a phylogenetic matrix by user input. Then, a parsimony tree is constructed in Phangorn from the user-defined subset. The tree is scored under both parsimony and Lewis' Mk model for discrete character data. The data and tree are then visualized using ggtree, based upon the ggplot2 package. This application makes use of Shiny to provide a graphical interface, but there is a second included tutorial for more experienced users of the R statistical language.
+treesiftr works by subsetting a phylogenetic matrix by user input. Then, a [parsimony tree](#glossary) is constructed in Phangorn [@Schliep2011, Schliep2017] from the user-defined subset. The tree is [scored](#glossary) under both parsimony and Lewis' Mk model [@Lewis2001] for discrete character data. The data and tree are then visualized using ggtree [@ggtree], based upon the ggplot2 package [@ggplot2]. This application makes use of Shiny to provide a graphical interface, but there is a second included tutorial for more experienced users of the R statistical language.
 
 ## Parsimony Questions
 
-1. Visualize characters 1 and 2. What is the parsimony score for this character set. Click "Do you want to print the parsimony score?" in the infterface to check your answer.
+1. Visualize characters 1 and 2. What is the parsimony score for this character set. Click "Do you want to print the [parsimony score?](#glossary)" in the infterface to check your answer.
 
-2. Visualize characters 2 and 3. What monophyletic group from tree 1 is no longer on this tree? Click below for the answer
+2. Visualize characters 2 and 3. What [monophyletic](#glossary) group from tree 1 is no longer on this tree? Click below for the answer
 
 3. What is the parsimony score of the 31-34 character set? Click "Do you want to print the parsimony score?" in the infterface to check your answer.
  
-4. Which character, 8, 9 or 10, represents a reveral?
+4. Which character, 8, 9 or 10, represents a [reversal](#glossary)?
 
-5. What information would we need to decide if the "1" state possesed by _Zaragocyon_daamsi_ is an autapomorphy? 
+5. What information would we need to decide if the "1" state possesed by _Zaragocyon_daamsi_  in character 52 is an [autapomorphy](#glossary)? 
 
 6. Click the switch that says "Do you want to print the likelihood score under the Mk model?" _and_ the switch that says "Do you want to print the parsimony score?". Do all characters with the same parsimony score have the same likelihood score? 
 
@@ -44,4 +54,30 @@ treesiftr works by subsetting a phylogenetic matrix by user input. Then, a parsi
 
 10. These trees are fully resolved. Based on your exploration of the data, does this degree of resolution make sense?
 
+## Glossary
 
+_Ancestral State_: A character state possessed by the ancestor of a group
+
+_Autapomorphy_: A character state that is unique to a specific taxon.
+
+_Derived State_: A character state that is different from the ancestral state.
+
+_Likelihood Score_: The likelihood of the observed data under a specific 
+model.
+
+_Maximum likelihood_: A phylogenetic optimatlity criterion under which phylogenetic
+data are modeled according to sets of assumptions. Under this criterion, the tree
+that has the best ("maximum") likelihood score under the assumed model is to be preferred.
+
+_Maximum parsimony_: A phylogenetic optimality criterion. This criterion holds 
+that the tree implying the fewest changes in the characters used to generate it
+should be preferred.
+
+_Monophyletic_: A group on a phylogeny of an ancestor and all of its descendents.
+
+_Parsimony Score_: The number of changes implied by a character on a tree.
+
+_Reversal_: A change from the derived state back to the ancestral state.
+
+
+## References

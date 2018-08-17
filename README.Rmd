@@ -1,6 +1,7 @@
 ---
 title: "README.Rmd"
 output: html_document
+bibliography: bibliography.bib
 ---
   ![logo](inst/images/treesiftR.png)
   [![Travis build status](https://travis-ci.org/wrightaprilm/treesiftr.svg?branch=master)](https://travis-ci.org/wrightaprilm/treesiftr)
@@ -9,13 +10,29 @@ output: html_document
 ## Introduction
 
 Estimating phylogenetic trees is crucial in many areas of evolutionary biology.
-However, visualizing the relationship between data and trees is not intutive [@baumTT]. To assist with visualizing this relationship, I have created treesiftR, 
-an R package that takes subsets of data from a phylogenetic matrix, generates a tree
-under parsimony, and scores that tree under both the likelihood and parsimony criteria. The output of the package is a visualization or set of visualizations 
-of a tree and characters. Also included is a Shiny application that can be run locally or used via the web without installing any R packages or having knowledge of R.
+However, visualizing the relationship between data and trees is not intutive. To assist with visualizing this relationship, I have created treesiftR, 
+an R package [@R] that takes subsets of data from a phylogenetic matrix, generates a tree under parsimony, and scores that tree under both the likelihood and parsimony criteria. The output of the package is a visualization or set of visualizations of a tree and characters. Also included is a (Shiny application](https://wrightaprilm.shinyapps.io/treesiftr_app/) [@shiny] that can be run locally or used via the web without installing any R packages or having knowledge of R.
 
+### Target Audience
 
-```{r setup, include=FALSE}
+treesiftr has been used in the [Analytical Paleobiology Workshop](http://www.analytical.palaeobiology.de/), in which the audience was graduate students and postdocs, many of whom had no prior knowledge of phylogeny. It is also
+used in the Genetics course at Southeastern Louisiana University, where the audience 
+is undergraduates who have no prior knowledge of phylogeny. It is meant to be 
+accompanied by lecture material on phylogenetics. A glossary is provided with each 
+worksheet, and a sample slide deck is included in the `inst/slides` directory.
+
+## Installation 
+
+Currently, treesiftr can be installed via the devtools ```install_github```
+function [@devtools]. 
+
+```{r}
+devtools::install_github("wrightaprilm/treesiftr")
+```
+
+## Required Packages
+
+```{r setup}
 knitr::opts_chunk$set(echo = TRUE)
 library(treesiftr)
 library(phangorn)
@@ -24,28 +41,37 @@ library(ggtree)
 library(ggplot2)
 ```
 
+## Operation
 
+The first step to making a treesiftr visualization is to select the subset of 
+the phylogenetic matrix that we would like to visualize. This is performed via a function called ```generate_sliding```. The below command will subset the  
 
-```{r message=FALSE} 
-aln_path <- "inst/extdata/bears_fasta.fa"
+```{r message=FALSE,  warning=FALSE} 
+# Locate package data
+fdir <- system.file("extdata", package = "treesiftr") 
+aln_path <- file.path(fdir, "bears_fasta.fa")
 bears <- read_alignment(aln_path)
-tree <- read.tree("inst/extdata/starting_tree.tre")
+# Read in a starting phylogenetic tree
+tree <- read.tree(file.path(fdir, "starting_tree.tre"))
 
-sample_df <- generate_sliding(bears, start_char = 1, stop_char = 10, steps = 1)
-
+# Generate our list of dataframe subsets
+sample_df <- generate_sliding(bears, start_char = 1, stop_char = 5, steps = 1)
 ```
 
-## Including Plots
+The result of this is a dataframe, shown below:
 
-You can also embed plots, for example:
+```{r}
+sample_df
+```
+This dataframe dispays the start character (the first character that will be visualized) and stop character (the final character that will be visualized). 
 
-```{r pressure, echo=FALSE, message=FALSE}
-output_vector <- generate_tree_vis(sample_df = sample_df, alignment = aln_path, 
-                                   tree = tree, phy_mat = bears, pscore = TRUE,
-                                   lscore = TRUE)
-output_vector
+We can then build trees from each subset:
+
+```{r message=FALSE,  warning=FALSE}
+output_vector <- generate_tree_vis(sample_df = sample_df, alignment =                                                     aln_path, tree = tree, phy_mat = bears)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+`Phangorn` [@Schliep2011, Schliep2017] requires a starting tree to estimate a parsimony tree. We specify the tree we read in earlier for this purpose. The trees, which were generated with `ggtree` [@ggtree], a ggplot2 [@ggplot2] library for phylogenies, have been saved to a vector, which can be displayed in its entirety, or subsetted to look at specific trees.
+
 
 ## References
