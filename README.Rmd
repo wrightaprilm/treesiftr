@@ -11,7 +11,7 @@ bibliography: bibliography.bib
 
 Estimating phylogenetic trees is crucial in many areas of evolutionary biology.
 However, visualizing the relationship between data and trees is not intutive. To assist with visualizing this relationship, I have created treesiftR, 
-an R package [@R] that takes subsets of data from a phylogenetic matrix, generates a tree under parsimony, and scores that tree under both the likelihood and parsimony criteria. The output of the package is a visualization or set of visualizations of a tree and characters. Also included is a (Shiny application](https://wrightaprilm.shinyapps.io/treesiftr_app/) [@shiny] that can be run locally or used via the web without installing any R packages or having knowledge of R.
+an R package [@R] that takes subsets of data from a phylogenetic matrix, generates a tree under parsimony, and scores that tree under both the likelihood and parsimony criteria. The output of the package is a visualization or set of visualizations of a tree and characters. Also included is a [Shiny application](https://wrightaprilm.shinyapps.io/treesiftr_app/) [@shiny] that can be run locally or used via the web without installing any R packages or having knowledge of R.
 
 ### Target Audience
 
