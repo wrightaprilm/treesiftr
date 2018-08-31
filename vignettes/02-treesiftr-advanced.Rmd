@@ -1,6 +1,8 @@
 ---
 title: "treesifter advanced"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 bibliography: ../bibliography.bib
 ---
 
@@ -49,17 +51,10 @@ for discrete character data. The data and tree are then visualized using ggtree,
 ## Installation
 
 Currently, treesiftr can be installed via the devtools ```install_github```
-function. 
+function. treesiftr has a number of required packages. Install and load the below. 
 
-```{r}
+```{r setup, message=FALSE}
 devtools::install_github("wrightaprilm/treesiftr")
-```
-
-## Loading required packages
-
-treesiftr has a number of required packages. Install and load the below. 
-
-```{r setup, include=FALSE, message=FALSE}
 library(treesiftr)
 library(treesiftr)
 library(phangorn)
@@ -98,6 +93,13 @@ We can then build trees from each subset:
 output_vector <- generate_tree_vis(sample_df = sample_df, alignment =                                                     aln_path, tree = tree, phy_mat = bears)
 ```
 
+The above code saves the trees to a vector, but does not visualize them. They can
+be viauslized by naming the vector, like so:
+
+```{r}
+output_vector 
+```
+
 `Phangorn` [@Schliep2011, Schliep2017] requires a starting tree to estimate a parsimony tree. We specify the tree we read in earlier for this purpose. The trees, which were generated with `ggtree` [@ggtree] have been saved to a vector, which can be displayed in its entirety, or subsetted to look at specific trees.
 
 ## Questions
@@ -121,11 +123,13 @@ characters 1 and 2 is no longer on this tree?
 5. What information would we need to decide if the "1" state possesed by _Zaragocyon_daamsi_ in character 52 is an [autapomorphy](#glossary)? 
 
 6.  Do all characters with the same parsimony score have the same likelihood 
-score? You can add the likelihood score to the visualization like so:
+score? You can add the likelihood score to the visualization using the below 
+code:
 
 ```{r message=FALSE,  warning=FALSE}
 output_vector <- generate_tree_vis(sample_df = sample_df, alignment =                                                     aln_path, tree = tree, phy_mat = bears, 
                                    pscore = TRUE, lscore = TRUE)
+output_vector
 ```
 
 7. Compare characters 46-49 and 47-50. Why does set 47-50 have a better 
