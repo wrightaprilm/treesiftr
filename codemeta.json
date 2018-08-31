@@ -1,0 +1,17 @@
+{
+  "@context": "https://raw.githubusercontent.com/codemeta/codemeta/master/codemeta.jsonld",
+  "@type": "Code",
+  "author": [
+
+  ],
+  "identifier": "",
+  "codeRepository": "https://github.com/wrightaprilm/treesiftr",
+  "datePublished": "2018-08-31",
+  "dateModified": "2018-08-31",
+  "dateCreated": "2018-08-31",
+  "description": "Tools for visualizing trees and data",
+  "keywords": "biology, paleobiology, phylogeny",
+  "license": "MIT",
+  "title": "treesiftr",
+  "version": "v1.0.0"
+}
