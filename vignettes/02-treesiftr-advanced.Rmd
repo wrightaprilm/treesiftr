@@ -111,7 +111,7 @@ output_vector <- generate_tree_vis(sample_df = sample_df, alignment =           
                                    pscore = TRUE)
 ```
 
-2. Visualize characters 2 and 3. What [monophyletic](#glossary)group from the tree of 
+2. Visualize characters 2 and 3. What [monophyletic](#glossary) group from the tree of 
 characters 1 and 2 is no longer on this tree? 
 
 3. What is the parsimony score of the 31-34 character set? 
