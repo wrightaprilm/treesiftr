@@ -34,7 +34,7 @@ treesiftr works by subsetting a phylogenetic matrix by user input. Then, a [pars
 
 ## Parsimony Questions
 
-1. Visualize characters 1 and 2. What is the parsimony score for this character set. Click "Do you want to print the [parsimony score?](#glossary)" in the infterface to check your answer.
+1. Visualize characters 1 and 2. What is the parsimony score for this character set. Click "Do you want to print the [parsimony score?](#glossary)" in the interface to check your answer.
 
 2. Visualize characters 2 and 3. What [monophyletic](#glossary) group from tree 1 is no longer on this tree? Click below for the answer
 

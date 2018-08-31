@@ -3,7 +3,7 @@
 #' @param phy_mat Name of the phylogenetic matrix from which character sets will be sampled
 #' @param start_char Integer indicating where in the data set to begin generating character sets
 #' @param stop_char Integer indicating where in the data set to stop generating character sets
-#' @param steps Integer indicating how amny characters will be in each set
+#' @param steps Integer indicating how many characters will be in each set
 #' @return df
 #' @examples
 #' sample_df <- generate_sliding(bears, 1, 10, 2)

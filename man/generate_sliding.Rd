@@ -13,7 +13,7 @@ generate_sliding(phy_mat, start_char, stop_char, steps)
 
 \item{stop_char}{Integer indicating where in the data set to stop generating character sets}
 
-\item{steps}{Integer indicating how amny characters will be in each set}
+\item{steps}{Integer indicating how many characters will be in each set}
 }
 \value{
 df
