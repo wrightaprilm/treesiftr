@@ -21,7 +21,7 @@ Phylogenetic trees represent the evolutionary relationships between a set of tax
 phylogenetic trees is crucial in many areas of biology. However, visualizing the 
 relationship between a phylogenetic tree and the data used to generate it is not always 
 intuitive to novice learners. To assist with understanding this relationship, I have created treesiftr, an R 
-package [@R] that creates subsets of data from a phylogenetic matrix, generates a 
+package [@R] that creates subsets of data from a phylogenetic matrix, estimates a 
 tree for each subset under the maximum parsimony optimality criterion, and scores that 
 tree under both the likelihood and parsimony criteria. The output of the package is a 
 visualization or set of visualizations of a tree and the characters used to estimate it. 
@@ -51,21 +51,25 @@ and specific R skills, such as interacting with phylogenetic data.
 
 ## Statement of Need
 
-treesiftr was initially written for use in the [Analytical Paleobiology Workshop](http://www.analytical.palaeobiology.de/), summer 2018. 
+treesiftr was initially written for use in the [Analytical Paleobiology Workshop](http://www.analytical.palaeobiology.de/) in summer 2018.
+This course is a 30-day paleobiological data predominantly for graduate students, but also 
+postdocs and research-active undergraduates. treesiftr was used in the last week of the course,
+by which time the learners had been working with R via the RStudio application for three weeks.
 There are many  phylogenetic tree viewers on the market such as [FigTree](http://tree.bio.ed.ac.uk/software/figtree/),
 IcyTree [@icytree], and Phylogeny.IO [@phylogenyio]. But visualizing the data that underlie a 
 particular tree is still largely accomplished via the Mesquite software [@Maddison2008]. To 
 use Mesquite, one must perform local installs. The software must also be interacted with via 
 a GUI, without the opportunity for learners to practice programmatic skills while learning about
-phylogenetic trees and data. R has become a common language for research use in paleobiology, 
-and I wrote this package to allow students to practice R skills, while learning about the 
+phylogenetic trees and data. Since the participants in the course were learning R, 
+I wrote this package to allow students to practice R skills, while learning about the 
 relationship between phylogenetic data and phylogenetic trees. In this setting, the exercise 
 itself took about 45 minutes, and was embedded in a 3-hour lecture block (see below). 
 
 I also added a web-based GUI for portability, and use in undergraduate biology classrooms. 
-In undergraduate biology classrooms, programming skill cannot be assumed, and performing 
-installations on school or personal computers for a single class period may not be feasible. In 
-particular, I am faculty at Southeastern Louisiana University, which is an institution serving 
+In undergraduate biology classrooms, learners are largely naive with respect to scientific computing,
+ and performing installations on school or personal computers for a single class period may 
+ not be feasible. In  particular, I am faculty at Southeastern Louisiana University, which 
+ is an institution serving 
 students in a low-income region of a low-income state. Many students do not have reasonable 
 computers to perform local installs of software. For demonstrating phylogeny and evolutionary 
 history in my genetics class, a web-based viewer and activity set is, thereforem preferable. 
@@ -75,9 +79,9 @@ activity taking about 30 minutes.
 The included worksheets and package are not intended to be a replacement for a lecture. They are,
 instead, intended to be a hands-on supplement for the lecturer to use in class. By allowing the student
 to choose subsets of data, and have a tree of those data appear instantly, the relationship between
-the data and the estimated tree is enforced visually. However, each worksheet does come with a
+the data and the estimated tree is enforced visually. Each worksheet does come with a
 glossary of terms that are required to describe phylogenetic trees, and it is the responsibility
-of the instructor to help students learn these terms before they start the activity. is There is one example
+of the instructor to help students learn these terms before they start the activity. There is one example
 slideshow included in the `inst/slides` directory. These slides are written in RMarkdown,
 with executable R code segments that illustrate skills such as interacting with phylogenetic trees
 in R, and terminology to describe phylogenies. An overview of different methodologies in
@@ -95,6 +99,7 @@ phylogenetic trees. The RStudio activities share these objectives, but students 
 also practice using functions to read phylogenetic data, subsetting vectors and matrices of data, 
 and changing the arguments to functions to achieve a desired behavior. The advanced activity does
 not teach students to program in R. I recommend that users of this activity are familiar with
-object assignments, vectors, functions, and dataframes.
+object assignments, vectors, functions, and dataframes prior to beginning the 02-treesiftr-advanced
+activity.
 
 # References

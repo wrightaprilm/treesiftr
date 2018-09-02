@@ -71,6 +71,7 @@ We can then build trees from each subset:
 
 ```{r message=FALSE,  warning=FALSE}
 output_vector <- generate_tree_vis(sample_df = sample_df, alignment =                                                     aln_path, tree = tree, phy_mat = bears)
+output_vector
 ```
 
 `Phangorn` [@Schliep2011, Schliep2017] requires a starting tree to estimate a parsimony tree. We specify the tree we read in earlier for this purpose. The trees, which were generated with `ggtree` [@ggtree], a ggplot2 [@ggplot2] library for phylogenies, have been saved to a vector, which can be displayed in its entirety, or subsetted to look at specific trees.

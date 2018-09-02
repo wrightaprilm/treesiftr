@@ -46,26 +46,26 @@ treesiftr works by subsetting a phylogenetic matrix by user input. Then, a [pars
 
 ## Parsimony Questions
 
-1. Visualize characters 1 and 2. What is the parsimony score for this character set. Click "Do you want to print the [parsimony score?](#glossary)" in the interface to check your answer.
+1. Visualize characters 1 and 2. What is the parsimony score for this character set? Click "Do you want to print the [parsimony score?](#glossary)" in the interface to check your answer.
 
 > _Instructor's Note:_ The answer is two, as viewed in the below screenshot.
 
 ![Question One Answer](img/Q1.png)
 
-2. Visualize characters 2 and 3. What [monophyletic](#glossary) group from tree 1 is no longer on this tree? Click below for the answer
+2. Visualize characters 2 and 3. What [monophyletic](#glossary) group from tree 1 is no longer on this tree? 
 
 > _Instructor's Note:_ The answer is _Ursavus brevirhinus_, _Ballusia elmensis_,
 > and _Ursavus primaevus_. _Ursavus primaevus_ is no longer sister to _Ursavus     
 > brevirhinus_ and _Ballusia elmensis_ on the tree of character 2-3. Sample output 
 > follows.
 
-![Question One Answer](img/Q2.png)
+![Question Two Answer](img/Q2.png)
 
 
 3. What is the parsimony score of the 31-34 character set? Click "Do you want to print the parsimony score?" in the infterface to check your answer.
  
 > _Instructor's Note:_ The answer is 7. The output you should see is below.
-![Question One Answer](img/Q3.png)
+![Question Three Answer](img/Q3.png)
 
 4. Which character, 8, 9 or 10, represents a [reversal](#glossary)? 
 
@@ -74,17 +74,16 @@ the branch leading to _Tremarctos_, _Melursus_, _Helarctos_, and _Ursus_.
 _Ursus thibetanus_ posesses the ancestral blue state, and is the best candidate for
 reversal.
 
-![Question One Answer](img/Q4.png)
+![Question Four Answer](img/Q4.png)
 
 5. What information would we need to decide if the "1" state possesed by _Zaragocyon_daamsi_  in character 52 is an [autapomorphy](#glossary)? 
 
 > _Instructor's Note:_ To make this decision, we would want to know if there are other
-> bears that are not sampled on this tree that posess this character. We can view
-> the tree like so:
+> bears that are not sampled on this tree that posess this character. 
 
 6. Click the switch that says "Do you want to print the likelihood score under the Mk model?" _and_ the switch that says "Do you want to print the parsimony score?". Do all characters with the same parsimony score have the same likelihood score? 
 
-> _Instructor's Notes:_ It is possible for characters with the same number of parsimony > steps to have different likelihood scores.
+> _Instructor's Notes:_ It is possible for characters with the same number of parsimony  steps to have different likelihood scores.
 
 7. Compare characters 46-49 and 47-50. Why does set 47-50 have a better likelihood than 46-49? 
 
@@ -110,8 +109,8 @@ this may be misleading if little to no data support the grouping!
 > _Instructor's Note:_ A sample slide deck for more advanced audiences is included
 > in the folder `inst/slides`. This slide deck is meant to be viewed in RStudio, 
 > as it has executeable code blocks. Hoever, it is also included in HTML format,
-> if this is desireable for presentation. This is simply included as a sample of how   > one might choose to deliver a lecture to cover some of the phylogenetic terms in
-> this activity. _It is not necessary to complete it to use this activity!_
+> if this is desireable for presentation. This is simply included as a sample of how    one might choose to deliver a lecture to cover some of the phylogenetic terms in
+> this activity. _It is not necessary to us this lecture to make use of this activity!_
 
 treesiftr works by subsetting a phylogenetic matrix using the `start`, `stop` 
 and `step` arguments. The `start` argument controls where in the matrix you 
@@ -252,7 +251,10 @@ output_vector <- generate_tree_vis(sample_df = sample_df, alignment =           
                                    pscore = TRUE, lscore = TRUE)
 output_vector
 ```
-> _Instructor's Notes:_ It is possible for characters with the same number of parsimony > steps to have different likelihood scores.
+
+ 
+ > _Instructor's Notes:_ It is possible for characters with the same number of 
+ > parsimony  steps to have different likelihood scores.
 
 7. Compare characters 46-49 and 47-50. Why does set 47-50 have a better 
 likelihood than 46-49? 
