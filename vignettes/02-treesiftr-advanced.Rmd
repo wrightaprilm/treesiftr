@@ -1,8 +1,8 @@
 ---
 title: "treesifter advanced"
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 bibliography: ../bibliography.bib
 ---
 
@@ -53,9 +53,9 @@ for discrete character data. The data and tree are then visualized using ggtree,
 Currently, treesiftr can be installed via the devtools ```install_github```
 function. treesiftr has a number of required packages. Install and load the below. 
 
-```{r setup, message=FALSE}
+```{r message=FALSE, warning=FALSE}
+library(devtools)
 devtools::install_github("wrightaprilm/treesiftr")
-library(treesiftr)
 library(treesiftr)
 library(phangorn)
 library(alignfigR)
@@ -68,13 +68,13 @@ library(ggplot2)
 The first step to making a treesiftr visualization is to select the subset of 
 the phylogenetic matrix that we would like to visualize. This is performed via a function called ```generate_sliding```. The below command will subset the  
 
-```{r message=FALSE,  warning=FALSE} 
+```{r message=FALSE, warning=FALSE} 
 # Locate package data and read alignment 
 fdir <- system.file("extdata", package = "treesiftr") 
 aln_path <- file.path(fdir, "bears_fasta.fa")
-bears <- read_alignment(aln_path)
+bears <- alignfigR::read_alignment(aln_path)
 # Read in a starting phylogenetic tree
-tree <- read.tree(file.path(fdir, "starting_tree.tre"))
+tree <- ape::read.tree(file.path(fdir, "starting_tree.tre"))
 
 # Generate our list of dataframe subsets
 sample_df <- generate_sliding(bears, start_char = 1, stop_char = 5, steps = 1)
@@ -89,14 +89,14 @@ This dataframe dispays the start character (the first character that will be vis
 
 We can then build trees from each subset:
 
-```{r message=FALSE,  warning=FALSE}
+```{r, message=FALSE,  warning=FALSE}
 output_vector <- generate_tree_vis(sample_df = sample_df, alignment =                                                     aln_path, tree = tree, phy_mat = bears)
 ```
 
 The above code saves the trees to a vector, but does not visualize them. They can
-be viauslized by naming the vector, like so:
+be visualized by naming the vector, like so:
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 output_vector 
 ```
 
@@ -129,7 +129,6 @@ code:
 ```{r message=FALSE,  warning=FALSE}
 output_vector <- generate_tree_vis(sample_df = sample_df, alignment =                                                     aln_path, tree = tree, phy_mat = bears, 
                                    pscore = TRUE, lscore = TRUE)
-output_vector
 ```
 
 7. Compare characters 46-49 and 47-50. Why does set 47-50 have a better 

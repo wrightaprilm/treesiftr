@@ -1,11 +1,13 @@
 ---
 title: "treesifter"
-output: html_document
+output:
+  html_document: default
+  pdf_document: default
 bibliography: ../bibliography.bib
 ---
 # Introduction
 
-[treesiftr](https://wrightaprilm.shinyapps.io/treesiftr_app/) is a Shiny application [@shiny] for visualizing the relationship between phylogenetic trees and phylogenetic data. Phylogenetic trees are crucial to the study of comparative biology, taxonomy, and evolution. However, understanding how to read a phylogenetic tree, and how a phylogenetic tree relates to underlying phylogenetic data, remain challenging.
+[treesiftr](https://wrightaprilm.shinyapps.io/treesiftr_app/) is a Shiny application [@shiny] for visualizing the relationship between phylogenetic trees and phylogenetic data. Phylogenetic trees are crucial to the study of comparative biology, taxonomy, and evolution. However, understanding how to read a phylogenetic tree, and how a phylogenetic tree relates to underlying phylogenetic data, remains challenging.
 
 In today's lab exercise, we will learn about a phylogenetic matrix, and then use the data in the matrix to visualize a phylogenetic tree.
 
