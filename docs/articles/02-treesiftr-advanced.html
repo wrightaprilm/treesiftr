@@ -60,6 +60,9 @@
     <li>
       <a href="../articles/02-treesiftr-advanced.html">treesifter advanced</a>
     </li>
+    <li>
+      <a href="../articles/Untitled.html">treesiftr: An R package and server for viewing phylogenetic trees and data</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -172,11 +175,6 @@
 </ol>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">output_vector &lt;-<span class="st"> </span><span class="kw"><a href="../reference/generate_tree_vis.html">generate_tree_vis</a></span>(<span class="dt">sample_df =</span> sample_df, <span class="dt">alignment =</span>                                                     aln_path, <span class="dt">tree =</span> tree, <span class="dt">phy_mat =</span> bears,</a>
 <a class="sourceLine" id="cb13-2" data-line-number="2">                                   <span class="dt">pscore =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
-<pre><code>## Final p-score 2 after  0 nni operations 
-## Final p-score 2 after  0 nni operations 
-## Final p-score 2 after  0 nni operations 
-## Final p-score 2 after  1 nni operations 
-## Final p-score 2 after  1 nni operations</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li><p>Visualize characters 2 and 3. What <a href="#glossary">monophyletic</a> group from the tree of characters 1 and 2 is no longer on this tree?</p></li>
 <li><p>What is the parsimony score of the 31-34 character set?</p></li>
@@ -184,13 +182,8 @@
 <li><p>What information would we need to decide if the “1” state possesed by <em>Zaragocyon_daamsi</em> in character 52 is an <a href="#glossary">autapomorphy</a>?</p></li>
 <li><p>Do all characters with the same parsimony score have the same likelihood score? You can add the likelihood score to the visualization using the below code:</p></li>
 </ol>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">output_vector &lt;-<span class="st"> </span><span class="kw"><a href="../reference/generate_tree_vis.html">generate_tree_vis</a></span>(<span class="dt">sample_df =</span> sample_df, <span class="dt">alignment =</span>                                                     aln_path, <span class="dt">tree =</span> tree, <span class="dt">phy_mat =</span> bears, </a>
-<a class="sourceLine" id="cb15-2" data-line-number="2">                                   <span class="dt">pscore =</span> <span class="ot">TRUE</span>, <span class="dt">lscore =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
-<pre><code>## Final p-score 2 after  0 nni operations 
-## Final p-score 2 after  0 nni operations 
-## Final p-score 2 after  0 nni operations 
-## Final p-score 2 after  1 nni operations 
-## Final p-score 2 after  1 nni operations</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">output_vector &lt;-<span class="st"> </span><span class="kw"><a href="../reference/generate_tree_vis.html">generate_tree_vis</a></span>(<span class="dt">sample_df =</span> sample_df, <span class="dt">alignment =</span>                                                     aln_path, <span class="dt">tree =</span> tree, <span class="dt">phy_mat =</span> bears, </a>
+<a class="sourceLine" id="cb14-2" data-line-number="2">                                   <span class="dt">pscore =</span> <span class="ot">TRUE</span>, <span class="dt">lscore =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <ol start="7" style="list-style-type: decimal">
 <li><p>Compare characters 46-49 and 47-50. Why does set 47-50 have a better likelihood than 46-49?</p></li>
 <li><p>What is the relationship between the likelihood score and increasing the number of characters visualized?</p></li>
