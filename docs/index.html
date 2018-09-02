@@ -45,6 +45,27 @@
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="articles/00-Instuctor-Guide.html">treesifter Instructor's Guide</a>
+    </li>
+    <li>
+      <a href="articles/01-treesiftr.html">treesifter</a>
+    </li>
+    <li>
+      <a href="articles/02-treesiftr-advanced.html">treesifter advanced</a>
+    </li>
+    <li>
+      <a href="articles/Untitled.html">treesiftr: An R package and server for viewing phylogenetic trees and data</a>
+    </li>
+  </ul>
+</li>
       </ul>
 <ul class="nav navbar-nav navbar-right"></ul>
 </div>
@@ -61,123 +82,123 @@
 
     
     
-
+<p><img src="../inst/images/treesiftR.png" alt="logo"><a href="https://travis-ci.org/wrightaprilm/treesiftr"><img src="https://travis-ci.org/wrightaprilm/treesiftr.svg?branch=master" alt="Travis build status"></a> <a href="https://codecov.io/github/wrightaprilm/treesiftr?branch=master"><img src="https://codecov.io/gh/wrightaprilm/treesiftr/branch/master/graph/badge.svg" alt="Coverage status"></a></p>
 <div id="introduction" class="section level2">
 <h2 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h2>
-<p>Estimating phylogenetic trees is crucial in many areas of evolutionary biology.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">aln_path &lt;-<span class="st"> "inst/extdata/bears_fasta.fa"</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">bears &lt;-<span class="st"> </span><span class="kw">read_alignment</span>(aln_path)</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3">tree &lt;-<span class="st"> </span><span class="kw">read.tree</span>(<span class="st">"inst/extdata/starting_tree.tre"</span>)</a>
-<a class="sourceLine" id="cb1-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb1-5" data-line-number="5">sample_df &lt;-<span class="st"> </span><span class="kw"><a href="reference/generate_sliding.html">generate_sliding</a></span>(<span class="dt">data_set =</span> bears, <span class="dt">start_char =</span> <span class="dv">45</span>, <span class="dt">stop_char =</span> <span class="dv">62</span>, <span class="dt">steps =</span> <span class="dv">4</span>)</a></code></pre></div>
+<p>Estimating phylogenetic trees is crucial in many areas of evolutionary biology. However, visualizing the relationship between data and trees is not intutive. To assist with visualizing this relationship, I have created treesiftR, an R package <span class="citation">(R Core Team 2018)</span> that takes subsets of data from a phylogenetic matrix, generates a tree under parsimony, and scores that tree under both the likelihood and parsimony criteria. The output of the package is a visualization or set of visualizations of a tree and characters. Also included is a <a href="https://wrightaprilm.shinyapps.io/treesiftr_app/">Shiny application</a> <span class="citation">(Chang et al. 2018)</span> that can be run locally or used via the web without installing any R packages or having knowledge of R.</p>
+<div id="target-audience" class="section level3">
+<h3 class="hasAnchor">
+<a href="#target-audience" class="anchor"></a>Target Audience</h3>
+<p>treesiftr has been used in the <a href="http://www.analytical.palaeobiology.de/">Analytical Paleobiology Workshop</a>, in which the audience was graduate students and postdocs, many of whom had no prior knowledge of phylogeny. It is also used in the Genetics course at Southeastern Louisiana University, where the audience is undergraduates who have no prior knowledge of phylogeny. It is meant to be accompanied by lecture material on phylogenetics. A glossary is provided with each worksheet, and a sample slide deck is included in the <code>inst/slides</code> directory.</p>
 </div>
-<div id="including-plots" class="section level2">
+</div>
+<div id="installation" class="section level2">
 <h2 class="hasAnchor">
-<a href="#including-plots" class="anchor"></a>Including Plots</h2>
-<p>You can also embed plots, for example:</p>
-<pre><code>## Generating tree for charset:4546</code></pre>
-<pre><code>## Final p-score 5 after  0 nni operations</code></pre>
-<pre><code>## Loading required package: Biostrings</code></pre>
-<pre><code>## Loading required package: BiocGenerics</code></pre>
-<pre><code>## Loading required package: parallel</code></pre>
+<a href="#installation" class="anchor"></a>Installation</h2>
+<p>Currently, treesiftr can be installed via the devtools <code>install_github</code> function <span class="citation">(Wickham, Hester, and Chang 2018)</span>.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"wrightaprilm/treesiftr"</span>)</a></code></pre></div>
+<pre><code>## Downloading GitHub repo wrightaprilm/treesiftr@master
+## from URL https://api.github.com/repos/wrightaprilm/treesiftr/zipball/master</code></pre>
+<pre><code>## Installing treesiftr</code></pre>
+<pre><code>## '/usr/local/Cellar/r/3.5.1/lib/R/bin/R' --no-site-file --no-environ  \
+##   --no-save --no-restore --quiet CMD INSTALL  \
+##   '/private/var/folders/bz/39rf7hg54qz0_j5w3klsn31h0000gn/T/RtmpwhZovh/devtools15f3c7673ffec/wrightaprilm-treesiftr-4d3c10c'  \
+##   --library='/usr/local/lib/R/3.5/site-library' --install-tests</code></pre>
+<pre><code>## </code></pre>
+</div>
+<div id="required-packages" class="section level2">
+<h2 class="hasAnchor">
+<a href="#required-packages" class="anchor"></a>Required Packages</h2>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">knitr<span class="op">::</span>opts_chunk<span class="op">$</span><span class="kw">set</span>(<span class="dt">echo =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="kw">library</span>(treesiftr)</a></code></pre></div>
+<pre><code>## Loading required package: shiny</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw">library</span>(phangorn)</a></code></pre></div>
+<pre><code>## Loading required package: ape</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw">library</span>(alignfigR)</a></code></pre></div>
+<pre><code>## Welcome to alignfigR!</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw">library</span>(ggtree)</a></code></pre></div>
+<pre><code>## ggtree v1.13.2  For help: https://guangchuangyu.github.io/software/ggtree
+## 
+## If you use ggtree in published research, please cite:
+## Guangchuang Yu, David Smith, Huachen Zhu, Yi Guan, Tommy Tsan-Yuk Lam. ggtree: an R package for visualization and annotation of phylogenetic trees with their covariates and other associated data. Methods in Ecology and Evolution 2017, 8(1):28-36, doi:10.1111/2041-210X.12628</code></pre>
 <pre><code>## 
-## Attaching package: 'BiocGenerics'</code></pre>
-<pre><code>## The following objects are masked from 'package:parallel':
-## 
-##     clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
-##     clusterExport, clusterMap, parApply, parCapply, parLapply,
-##     parLapplyLB, parRapply, parSapply, parSapplyLB</code></pre>
-<pre><code>## The following objects are masked from 'package:stats':
-## 
-##     IQR, mad, sd, var, xtabs</code></pre>
-<pre><code>## The following objects are masked from 'package:base':
-## 
-##     anyDuplicated, append, as.data.frame, basename, cbind,
-##     colMeans, colnames, colSums, dirname, do.call, duplicated,
-##     eval, evalq, Filter, Find, get, grep, grepl, intersect,
-##     is.unsorted, lapply, lengths, Map, mapply, match, mget, order,
-##     paste, pmax, pmax.int, pmin, pmin.int, Position, rank, rbind,
-##     Reduce, rowMeans, rownames, rowSums, sapply, setdiff, sort,
-##     table, tapply, union, unique, unsplit, which, which.max,
-##     which.min</code></pre>
-<pre><code>## Loading required package: S4Vectors</code></pre>
-<pre><code>## Loading required package: stats4</code></pre>
-<pre><code>## 
-## Attaching package: 'S4Vectors'</code></pre>
-<pre><code>## The following object is masked from 'package:ggtree':
-## 
-##     expand</code></pre>
-<pre><code>## The following object is masked from 'package:base':
-## 
-##     expand.grid</code></pre>
-<pre><code>## Loading required package: IRanges</code></pre>
-<pre><code>## 
-## Attaching package: 'IRanges'</code></pre>
-<pre><code>## The following object is masked from 'package:ggtree':
-## 
-##     collapse</code></pre>
-<pre><code>## Loading required package: XVector</code></pre>
-<pre><code>## 
-## Attaching package: 'Biostrings'</code></pre>
+## Attaching package: 'ggtree'</code></pre>
 <pre><code>## The following object is masked from 'package:ape':
 ## 
-##     complement</code></pre>
-<pre><code>## The following object is masked from 'package:base':
-## 
-##     strsplit</code></pre>
-<pre><code>## [1] 45 46
-## 
-##  loglikelihood: -5.600634 
-## 
-## unconstrained loglikelihood: -1.386294 
-## 
-## Rate matrix:
-##   0 1
-## 0 0 1
-## 1 1 0
-## 
-## Base frequencies:  
-## 0.5 0.5</code></pre>
-<pre><code>## Generating tree for charset:4950</code></pre>
-<pre><code>## Final p-score 5 after  0 nni operations 
-## [1] 49 50
-## 
-##  loglikelihood: -4.195854 
-## 
-## unconstrained loglikelihood: -1.386294 
-## 
-## Rate matrix:
-##   0 1
-## 0 0 1
-## 1 1 0
-## 
-## Base frequencies:  
-## 0.5 0.5</code></pre>
-<pre><code>## Generating tree for charset:5354</code></pre>
-<pre><code>## Final p-score 6 after  1 nni operations 
-## [1] 53 54
-## 
-##  loglikelihood: -5.600634 
-## 
-## unconstrained loglikelihood: -1.386294 
-## 
-## Rate matrix:
-##   0 1
-## 0 0 1
-## 1 1 0
-## 
-## Base frequencies:  
-## 0.5 0.5</code></pre>
+##     rotate</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a></code></pre></div>
+</div>
+<div id="operation" class="section level2">
+<h2 class="hasAnchor">
+<a href="#operation" class="anchor"></a>Operation</h2>
+<p>The first step to making a treesiftr visualization is to select the subset of the phylogenetic matrix that we would like to visualize. This is performed via a function called <code>generate_sliding</code>. The below command will subset the</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="co"># Locate package data</span></a></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1">fdir &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">"extdata"</span>, <span class="dt">package =</span> <span class="st">"treesiftr"</span>)</a>
+<a class="sourceLine" id="cb18-2" data-line-number="2">aln_path &lt;-<span class="st"> </span><span class="kw">file.path</span>(fdir, <span class="st">"bears_fasta.fa"</span>)</a>
+<a class="sourceLine" id="cb18-3" data-line-number="3">bears &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/alignfigR/topics/read_alignment">read_alignment</a></span>(aln_path)</a>
+<a class="sourceLine" id="cb18-4" data-line-number="4">tree &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggtree/topics/reexports">read.tree</a></span>(<span class="kw">file.path</span>(fdir, <span class="st">"starting_tree.tre"</span>))</a>
+<a class="sourceLine" id="cb18-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb18-6" data-line-number="6">sample_df &lt;-<span class="st"> </span><span class="kw"><a href="reference/generate_sliding.html">generate_sliding</a></span>(bears, <span class="dt">start_char =</span> <span class="dv">1</span>, <span class="dt">stop_char =</span> <span class="dv">10</span>, <span class="dt">steps =</span> <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb18-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb18-8" data-line-number="8"><span class="co"># Generate our list of dataframe subsets</span></a>
+<a class="sourceLine" id="cb18-9" data-line-number="9">sample_df &lt;-<span class="st"> </span><span class="kw"><a href="reference/generate_sliding.html">generate_sliding</a></span>(bears, <span class="dt">start_char =</span> <span class="dv">1</span>, <span class="dt">stop_char =</span> <span class="dv">5</span>, <span class="dt">steps =</span> <span class="dv">1</span>)</a></code></pre></div>
+<p>The result of this is a dataframe, shown below:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1">sample_df</a></code></pre></div>
+<pre><code>##   starting_val stop_val step_val
+## 1            1        2        1
+## 2            2        3        1
+## 3            3        4        1
+## 4            4        5        1
+## 5            5        6        1</code></pre>
+<p>This dataframe dispays the start character (the first character that will be visualized) and stop character (the final character that will be visualized).</p>
+<p>We can then build trees from each subset:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1">output_vector &lt;-<span class="st"> </span><span class="kw"><a href="reference/generate_tree_vis.html">generate_tree_vis</a></span>(<span class="dt">sample_df =</span> sample_df, <span class="dt">alignment =</span>                                                     aln_path, <span class="dt">tree =</span> tree, <span class="dt">phy_mat =</span> bears)</a></code></pre></div>
+<pre><code>## Final p-score 2 after  0 nni operations 
+## Final p-score 2 after  0 nni operations 
+## Final p-score 2 after  0 nni operations 
+## Final p-score 2 after  1 nni operations 
+## Final p-score 2 after  1 nni operations</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1">output_vector</a></code></pre></div>
 <pre><code>## [[1]]</code></pre>
-<p><img src="index_files/figure-html/pressure-1.png" width="700"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" width="700"></p>
 <pre><code>## 
 ## [[2]]</code></pre>
-<p><img src="index_files/figure-html/pressure-2.png" width="700"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-5-2.png" width="700"></p>
 <pre><code>## 
 ## [[3]]</code></pre>
-<p><img src="index_files/figure-html/pressure-3.png" width="700"></p>
-<p>Note that the <code>echo = FALSE</code> parameter was added to the code chunk to prevent printing of the R code that generated the plot.</p>
+<p><img src="index_files/figure-html/unnamed-chunk-5-3.png" width="700"></p>
+<pre><code>## 
+## [[4]]</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-5-4.png" width="700"></p>
+<pre><code>## 
+## [[5]]</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-5-5.png" width="700"></p>
+<p><code>Phangorn</code> <span class="citation">(Schliep 2011, Schliep2017)</span> requires a starting tree to estimate a parsimony tree. We specify the tree we read in earlier for this purpose. The trees, which were generated with <code>ggtree</code> <span class="citation">(Yu et al. 2017)</span>, a ggplot2 <span class="citation">(Wickham 2016)</span> library for phylogenies, have been saved to a vector, which can be displayed in its entirety, or subsetted to look at specific trees.</p>
+</div>
+<div id="references" class="section level2 unnumbered">
+<h2 class="hasAnchor">
+<a href="#references" class="anchor"></a>References</h2>
+<div id="refs" class="references">
+<div id="ref-shiny">
+<p>Chang, Winston, Joe Cheng, JJ Allaire, Yihui Xie, and Jonathan McPherson. 2018. <em>Shiny: Web Application Framework for R</em>. <a href="https://CRAN.R-project.org/package=shiny" class="uri">https://CRAN.R-project.org/package=shiny</a>.</p>
+</div>
+<div id="ref-R">
+<p>R Core Team. 2018. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/" class="uri">https://www.R-project.org/</a>.</p>
+</div>
+<div id="ref-Schliep2011">
+<p>Schliep, K.P. 2011. “Phangorn: Phylogenetic Analysis in R.” <em>Bioinformatics</em> 27 (4): 592–93. <a href="https://doi.org/10.1093/bioinformatics/btq706" class="uri">https://doi.org/10.1093/bioinformatics/btq706</a>.</p>
+</div>
+<div id="ref-ggplot2">
+<p>Wickham, Hadley. 2016. <em>Ggplot2: Elegant Graphics for Data Analysis</em>. Springer-Verlag New York. <a href="http://ggplot2.org" class="uri">http://ggplot2.org</a>.</p>
+</div>
+<div id="ref-devtools">
+<p>Wickham, Hadley, Jim Hester, and Winston Chang. 2018. <em>Devtools: Tools to Make Developing R Packages Easier</em>. <a href="https://CRAN.R-project.org/package=devtools" class="uri">https://CRAN.R-project.org/package=devtools</a>.</p>
+</div>
+<div id="ref-ggtree">
+<p>Yu, Guangchuang, David Smith, Huachen Zhu, Yi Guan, and Tommy Tsan-Yuk Lam. 2017. “Ggtree: An R Package for Visualization and Annotation of Phylogenetic Trees with Their Covariates and Other Associated Data.” <em>Methods in Ecology and Evolution</em> 8 (1): 28–36. <a href="https://doi.org/10.1111/2041-210X.12628" class="uri">https://doi.org/10.1111/2041-210X.12628</a>.</p>
+</div>
+</div>
 </div>
   </div>
 
@@ -204,14 +225,7 @@
 </ul>
 </div>
 
-      <div class="dev-status">
-<h2>Dev status</h2>
-<ul class="list-unstyled">
-<li><a href="https://travis-ci.org/wrightaprilm/treesiftr"><img src="https://travis-ci.org/wrightaprilm/treesiftr.svg?branch=master" alt="Travis build status"></a></li>
-<li><a href="https://codecov.io/github/wrightaprilm/treesiftr?branch=master"><img src="https://codecov.io/gh/wrightaprilm/treesiftr/branch/master/graph/badge.svg" alt="Coverage status"></a></li>
-</ul>
-</div>
-</div>
+      </div>
 
 </div>
 
