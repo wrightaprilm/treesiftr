@@ -61,8 +61,8 @@ particular tree is still largely accomplished via the Mesquite software [@Maddis
 use Mesquite, one must perform local installs. The software must also be interacted with via 
 a GUI, without the opportunity for learners to practice programmatic skills while learning about
 phylogenetic trees and data. Since the participants in the course were learning R, 
-I wrote this package to allow students to practice R skills, while learning about the 
-relationship between phylogenetic data and phylogenetic trees. In this setting, the exercise 
+I wrote this package to allow students to practice R skills, while learning about phylogeny.
+ In this setting, the exercise 
 itself took about 45 minutes, and was embedded in a 3-hour lecture block (see below). 
 
 I also added a web-based GUI for portability, and use in undergraduate biology classrooms. 
@@ -72,7 +72,7 @@ In undergraduate biology classrooms, learners are largely naive with respect to 
  is an institution serving 
 students in a low-income region of a low-income state. Many students do not have reasonable 
 computers to perform local installs of software. For demonstrating phylogeny and evolutionary 
-history in my genetics class, a web-based viewer and activity set is, thereforem preferable. 
+history in my genetics class, a web-based viewer and activity set is, therefore, preferable. 
 The discussion of phylogeny is one hour and fifteen minute class period, with the hands-on 
 activity taking about 30 minutes.
 
