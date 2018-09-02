@@ -108,7 +108,7 @@ output_vector
 set? Once you have answered this question,check your answer by adding the 
 parismony score using the `pscore` argument:
 
-```{r message=FALSE, warning=FALSE}
+```{r message=FALSE, eval=FALSE, warning=FALSE}
 output_vector <- generate_tree_vis(sample_df = sample_df, alignment =                                                     aln_path, tree = tree, phy_mat = bears,
                                    pscore = TRUE)
 ```
@@ -126,7 +126,7 @@ characters 1 and 2 is no longer on this tree?
 score? You can add the likelihood score to the visualization using the below 
 code:
 
-```{r message=FALSE,  warning=FALSE}
+```{r message=FALSE, eval=FALSE,  warning=FALSE}
 output_vector <- generate_tree_vis(sample_df = sample_df, alignment =                                                     aln_path, tree = tree, phy_mat = bears, 
                                    pscore = TRUE, lscore = TRUE)
 ```
