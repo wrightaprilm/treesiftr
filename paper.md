@@ -17,36 +17,17 @@ bibliography: bibliography.bib
 
 ## Summary
 
-Phylogenetic trees represent the evolutionary relationships between a set of taxa. Estimating 
-phylogenetic trees is crucial in many areas of biology. However, visualizing the 
-relationship between a phylogenetic tree and the data used to generate it is not always 
-intuitive to novice learners. To assist with understanding this relationship, I have created treesiftr, an R 
-package [@R] that creates subsets of data from a phylogenetic matrix, estimates a 
-tree for each subset under the maximum parsimony optimality criterion, and scores that 
-tree under both the likelihood and parsimony criteria. The output of the package is a 
-visualization or set of visualizations of a tree and the characters used to estimate it. 
-Also included is a (Shiny application](https://wrightaprilm.shinyapps.io/treesiftr_app/) [@shiny] 
-that can be run locally or used via the web without installing any R packages or 
-having knowledge of R.
+treesiftr is an R package [@R], and associated Shiny [@shiny] [application]((https://wrightaprilm.shinyapps.io/treesiftr_app/) for visualizing the relationship between phylogenetic trees and the underlying data used to estimate them. treesiftr works by subsetting a phylogenetic matrix according to user-provided input about
+which characters to visualize. A maximum parsimony tree is then estimated from each dataset subset. Maximum parsimony was chosen for speed and analytical simplicity. Under the parsimony optimality criterion, the preferred tree is the one that suggests the fewest evolutionary steps, or character changes over evolutionary history. The tree is scored under both parsimony and  Lewis' Mk model [@Lewis2001], a maximum likelihood model for estimating phylogeny from 
+discrete character data. The data and tree are then visualized using ggtree [@ggtree], based upon the ggplot2 [@ggplot2] package. Expected outputs are the same whether the learner is interacting via the GUI or the RStudio interface; however, the RStudio interface does have additional options not available in the GUI. 
 
-In the `vignettes` directory, there are two worksheets for student use. One worksheet
-(01-treesiftr) is intended for use with the Shiny server graphical user interface (GUI). The other,
-(02-treesiftr-advanced) is intended for use with R and RStudio. There is also an
-instructor's guide with screenshots of the expected GUI output, and worked code snippets and outputs
-for the advanced exercise. These exercises can also be viewed as a [rendered website](https://wrightaprilm.github.io/treesiftr/),
-so that no installations or downloads are required at all for the GUI-based exercises.
+The included Shiny [application]((https://wrightaprilm.shinyapps.io/treesiftr_app/) renders the visual output of the subsetting and estimation process, and can be used to provide further input to the treesiftr functions, such as decorating the trees with scores under different optimality criteria. It can be run locally or used via the web without installing any R packages or having knowledge of R.
 
-treesiftr works by subsetting a phylogenetic matrix according to user-provided input about
-which characters to visualize. A maximum parsimony tree is then estimated from each dataset subset. 
-Maximum parsimony was chosen for speed and analytical simplicity. Under the parsimony
-optimality criterion, the preferred tree is the one that suggests the fewest evolutionary steps,
-or character changes over evolutionary history. The tree is scored under both parsimony and 
-Lewis' Mk model [@Lewis2001], a maximum likelihood model for estimating phylogeny from 
-discrete character data. The data and tree are then visualized using ggtree [@ggtree],
-based upon the ggplot2 [@ggplot2] package. Expected outputs are the same whether the learner is interacting via the GUI or the 
-RStudio interface; however, the RStudio interface does have additional options not available in the GUI.
-The worksheet for the RStudio interface also emphasizes general R skills, such as subsetting data, 
-and specific R skills, such as interacting with phylogenetic data.
+Also included in the package are two worksheets and an instructor guide. The worksheet intended for use with the Shiny app, "treesiftr GUI", introduces the application, the underlying data, and how the application works. It includes several questions, and a glossary. The worksheet for the RStudio interface, "treesiftr Advanced", asks the same questions, but also emphasizes general R skills, such as subsetting data, and specific R skills, such as interacting with phylogenetic data. And instructor guide contains answers to the questions, as well as renderings of the outputs students should see.
+
+Phylogenetic trees represent the evolutionary relationships between a set of taxa. Estimating phylogenetic trees is crucial in many areas of biology. Phylogenetic trees are built from homologous characters, characters which are similar in multiple taxa because they were inherited from the most recent common ancestor [@Darwin1859]. For morphological traits, homology is assigned by experts by evaluating the character's evolutionary history and ontology. In molecular characters, it is typically assigned via multiple sequence alignment [@feng].
+
+Once homology is assigned, a phylogeny is estimated from the data. There are several optimality criteria that are used to do this. They broadly fall into parametric methods, such as maximum likelihood [@Felsenstein1973] and Bayesian methods [@Huelsenbeck2001a], and non-parametric methods, such as maximum parsimony [@FarrisKluge] and neighbor-joining [@gower1969]. Parametric methods assume a model of underlying character evolution, while non-paramtric methods do not. Parametric methods have been shown in many instances to be more accurate [@Felsenstein1978] and, as they enable a rigorous framework of model testing, should be preferred over non-parametric methods. However, they are also compute-intensive, and so treesiftr makes use of the maximum parsimony criterion for analytical simplicity. Under maximum parsimony, the tree that is favored for a set of taxa is the one which implies the fewest evolutionary changes.
 
 
 ## Statement of Need
@@ -88,18 +69,5 @@ in R, and terminology to describe phylogenies. An overview of different methodol
 phylogeny estimation is also provided. This is an example of a lecture that could be used to explain the 
 terminology presented in the worksheets. It is not necessary to use these particular slides
 for the activity to function.
-
-If using the GUI version of the software, the students will be applying the skill of 
-scoring a tree under the maximum parsimony tree estimation criterion, and they will explain how 
-different phylogenetic terms (such as monophyly, reversal, and autapomorphy) relate to the 
-representation of evolutionary history on a phylogenetic tree. This module also includes 
-several theoretical questions on phylogenetics, such as explaining the difference  between 
-two different optimality criteria (maximum parsimony and maximum likelihood) for constructing 
-phylogenetic trees. The RStudio activities share these objectives, but students will
-also practice using functions to read phylogenetic data, subsetting vectors and matrices of data, 
-and changing the arguments to functions to achieve a desired behavior. The advanced activity does
-not teach students to program in R. I recommend that users of this activity are familiar with
-object assignments, vectors, functions, and dataframes prior to beginning the 02-treesiftr-advanced
-activity.
 
 # References
