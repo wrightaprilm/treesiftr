@@ -1,5 +1,5 @@
 ---
-title: "treesifter"
+title: "treesifter GUI"
 output:
   html_document: default
   pdf_document: default
@@ -34,7 +34,7 @@ There are also two checkboxes. Leave these unchecked until otherwise noted.
 
 treesiftr works by subsetting a phylogenetic matrix by user input. Then, a [parsimony tree](#glossary) is constructed in Phangorn [@Schliep2011, Schliep2017] from the user-defined subset. The tree is [scored](#glossary) under both parsimony and Lewis' Mk model [@Lewis2001] for discrete character data. The data and tree are then visualized using ggtree [@ggtree], based upon the ggplot2 package [@ggplot2]. This application makes use of Shiny to provide a graphical interface, but there is a second included tutorial for more experienced users of the R statistical language.
 
-## Parsimony Questions
+## Questions
 
 1. Visualize characters 1 and 2. What is the parsimony score for this character set? Click "Do you want to print the [parsimony score?](#glossary)" in the interface to check your answer.
 
