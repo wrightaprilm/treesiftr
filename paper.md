@@ -17,7 +17,7 @@ bibliography: bibliography.bib
 
 ## Summary
 
-treesiftr is an R package [@R], and associated Shiny [@shiny] [application]((https://wrightaprilm.shinyapps.io/treesiftr_app/) for visualizing the relationship between phylogenetic trees and the underlying data used to estimate them. treesiftr works by subsetting a phylogenetic matrix according to user-provided input about
+treesiftr is an R package [@R] and associated Shiny [@shiny] [application]((https://wrightaprilm.shinyapps.io/treesiftr_app/) for visualizing the relationship between phylogenetic trees and the underlying data used to estimate them. treesiftr works by subsetting a phylogenetic matrix according to user-provided input about
 which characters to visualize. A maximum parsimony tree is then estimated from each data subset. Maximum parsimony was chosen for speed and analytical simplicity. Under the parsimony optimality criterion, the preferred tree is the one that suggests the fewest evolutionary steps, or character changes over evolutionary history. The tree is scored under both parsimony and  Lewis' Mk model [@Lewis2001], a maximum likelihood model for estimating phylogeny from 
 discrete character data. The data and tree are then visualized using ggtree [@ggtree], based upon the ggplot2 [@ggplot2] package. Expected outputs are the same whether the learner is interacting via the GUI or the RStudio interface; however, the RStudio interface does have additional options not available in the GUI. 
 
@@ -43,8 +43,8 @@ itself took about 45 minutes, and was embedded in a 3-hour lecture block (see be
 computers to perform local installs of software. For demonstrating phylogeny and evolutionary history in my genetics class, a web-based viewer and activity set is, therefore, preferable. 
 The discussion of phylogeny is one hour and fifteen minute class period, with the hands-on activity taking about 30 minutes.
 
-The included worksheets and package are not intended to be a replacement for a lecture. They are,
-instead, intended to be a hands-on supplement for the lecturer to use in class. By allowing the student
+The included worksheets and package are not intended to be a replacement for a lecture. They are
+instead intended to be a hands-on supplement for the lecturer to use in class. By allowing the student
 to choose subsets of data, and have a tree of those data appear instantly, the relationship between
 the data and the estimated tree is enforced visually. Each worksheet does come with a
 glossary of terms that are required to describe phylogenetic trees, and it is the responsibility
