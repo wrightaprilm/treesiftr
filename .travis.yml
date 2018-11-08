@@ -5,7 +5,7 @@ sudo: false
 cache: packages
 warnings_are_errors: FALSE
 bioc_required: yes
-use_bioc: yes
+use_bioc: true
 r_packages:
 - covr
 - testthat
