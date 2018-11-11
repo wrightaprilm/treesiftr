@@ -7,18 +7,21 @@ Authors@R: person("April", "Wright", role = c("aut", "cre"),
 Description: R package for building parsimony trees from subsets of characters in a matrix,
 	and visualizing the characters alongside the representations of the tree.
 License: MIT + file LICENSE
-Depends:
-    shiny
 Imports:
-    phangorn,
+    ape,
+    ggplot2,
     ggtree,
-    ggplot2
+    phangorn
 Suggests:
-    knitr,
-    testthat,
-    rmarkdown,
+    alignfigR,
     Biostrings,
-    covr
+    covr,
+    devtools,
+    knitr,
+    rmarkdown,
+    shiny,
+    testthat
 Encoding: UTF-8
 LazyData: true
+VignetteBuilder: knitr
 RoxygenNote: 6.1.0

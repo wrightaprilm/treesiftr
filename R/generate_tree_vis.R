@@ -7,6 +7,11 @@
 #' @param pscore Optional boolean specifying if you would like figures annotated with parsimony score of tree given data. Default FALSE.
 #' @param lscore Optional boolean specifying if you would like figures annotated with likelihood score of tree given data under the Mk model. Default FALSE.
 #' @return vector Vector of ggplot2 objects
+#' @importFrom phangorn phyDat
+#' @importFrom ape as.phylo
+#' @importFrom ggtree msaplot
+#' @importFrom ggtree ggtree
+#' @importFrom ggplot2 ggtitle
 #' @examples
 #' \dontrun{
 #' output_vector <- generate_tree_vis(sample_df = sample_df,
@@ -19,29 +24,29 @@
 generate_tree_vis <- function(sample_df, alignment, tree, phy_mat,
                               pscore = FALSE, lscore = FALSE){
   vis_vec <- list()
-  phy_mat <- phyDat(phy_mat, levels = c(0, 1), type = "USER")
+  phy_mat <- phangorn::phyDat(phy_mat, levels = c(0, 1), type = "USER")
   sample_df <- check_subs(sample_df = sample_df, phy_mat = phy_mat)
   for (i in 1:nrow(sample_df)){
     char_set <- c(sample_df$starting_val[i], sample_df$stop_val[i])
-    tr <- as.phylo(generate_tree_vec(phy_mat, sample_df$starting_val[i],
+    tr <- ape::as.phylo(generate_tree_vec(phy_mat, sample_df$starting_val[i],
                                      sample_df$stop_val[i], tree))
-    pl <- ggtree::msaplot(p=ggtree(tr), fasta=alignment, window = char_set,                                    width = .1, offset = 9 ) + geom_tiplab() +
-                          ggtitle(paste0(char_set[1],"\n",char_set[2]))
+    pl <- ggtree::msaplot(p=ggtree::ggtree(tr), fasta=alignment, window = char_set,                                    width = .1, offset = 9 ) + ggtree::geom_tiplab() +
+                          ggplot2::ggtitle(paste0(char_set[1],"\n",char_set[2]))
     if (pscore == TRUE) {
 #        tr <- tree_dat(tr, phy_mat, sample_df$starting_val[i], sample_df$stop_val[i],                      pscore = TRUE)
         ps <- as.character(tr$pars2)
         plab <- paste("PScore ", ps)
-        pl <- pl + ggtitle(paste0(char_set[1],"\n",char_set[2], "\n", plab))
+        pl <- pl + ggplot2::ggtitle(paste0(char_set[1],"\n",char_set[2], "\n", plab))
     }
     if (lscore == TRUE) {
 #      tr <- tree_dat(tr, phy_mat, sample_df$starting_val[i],
 #                     sample_df$stop_val[i], lscore = TRUE)
       l <- as.character(tr$lik)
       lab <- paste("LScore under Mk model ", l)
-      pl <- pl + ggtitle(paste0(char_set[1],"\n",char_set[2], "\n", lab))
+      pl <- pl + ggplot2::ggtitle(paste0(char_set[1],"\n",char_set[2], "\n", lab))
     }
     if (lscore & pscore == TRUE) {
-      pl <- pl + ggtitle(paste0(char_set[1],"\n",char_set[2], "\n", lab,
+      pl <- pl + ggplot2::ggtitle(paste0(char_set[1],"\n",char_set[2], "\n", lab,
                                 "\n", plab))
     }
     vis_vec[[i]] <- pl

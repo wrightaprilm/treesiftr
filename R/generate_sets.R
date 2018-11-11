@@ -4,7 +4,9 @@
 #' @param start_char Integer indicating where in the data set to begin generating character sets
 #' @param stop_char Integer indicating where in the data set to stop generating character sets
 #' @param steps Integer indicating how many characters will be in each set
-#' @return df
+#' @return df Dataframe of slices from the original phylogenetic matrix to be visualized.
+#' @importFrom utils tail head
+
 #' @examples
 #' sample_df <- generate_sliding(bears, 1, 10, 2)
 #' @export

@@ -7,6 +7,10 @@
 #' @param pscore Boolean calculate and export parsimony scores for each character set
 #' @param lscore Boolean calculate and export likelihood scores for each character set
 #' @return tree Tree object with p and l scores annotated via $
+#' @importFrom phangorn pml
+#' @importFrom phangorn acctran
+#' @importFrom ape multi2di
+
 #' @examples
 #' data(bears)
 #' tree <- generate_tree_vec(bears, 1, 2, tree)
@@ -16,7 +20,7 @@ tree_dat <-function(tree, phy_mat, start, stop, pscore = FALSE, lscore = FALSE){
   phy_mat <- phyDat(phy_mat, levels = c(0, 1), type = "USER")
   stop <- stop + 1
   char_set <- c(start, stop)
-  small_mat <- subset(phy_mat, select=charset[1]:charset[2],
+  small_mat <- subset(phy_mat, select=char_set[1]:char_set[2],
                       site.pattern = FALSE)
   if (lscore == TRUE){
     tree <- multi2di(tree)

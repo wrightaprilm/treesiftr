@@ -1,8 +1,11 @@
 ---
 title: "treesifter GUI"
-output:
-  html_document: default
-  pdf_document: default
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteEngine{knitr::knitr}
+  %\VignetteIndexEntry{treesiftr GUI}
+  %\usepackage[UTF-8]{inputenc}
 bibliography: ../bibliography.bib
 ---
 # Introduction

@@ -16,7 +16,7 @@ generate_sliding(phy_mat, start_char, stop_char, steps)
 \item{steps}{Integer indicating how many characters will be in each set}
 }
 \value{
-df
+df Dataframe of slices from the original phylogenetic matrix to be visualized.
 }
 \description{
 Generate a dataframe of start and stop values. These will determine what character sets from the total phylogenetic matrix will appear in each visualization

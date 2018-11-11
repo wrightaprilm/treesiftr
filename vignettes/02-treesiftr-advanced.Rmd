@@ -1,8 +1,11 @@
 ---
 title: "treesifter advanced"
-output:
-  html_document: default
-  pdf_document: default
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteEngine{knitr::knitr}
+  %\VignetteIndexEntry{treesiftr advanced}
+  %\usepackage[UTF-8]{inputenc}
 bibliography: ../bibliography.bib
 ---
 

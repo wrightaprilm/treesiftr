@@ -1,3 +1,10 @@
+CONDUCT.md
+inst/slides.zip
+README.RMD
+bibliography.bib
+paper.md
+codemeta.json
+docs/*
 .Rbuildignore
 ^.*\.Rproj$
 ^\.Rproj\.user$

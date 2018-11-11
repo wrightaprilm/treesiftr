@@ -3,7 +3,8 @@
 \docType{data}
 \name{bears}
 \alias{bears}
-\alias{bears}
+\alias{phy_mat}
+\alias{tree}
 \title{Dataset of Morphological character for extant and extinct bears.}
 \format{\describe{
 \item{bears}{A fasta dataset frame with 53940 rows and 10 variables}
@@ -18,7 +19,7 @@
 \usage{
 bears
 
-bears
+data(bears)
 }
 \description{
 A dataset containing 18 taxa and 62 characters for bears.
