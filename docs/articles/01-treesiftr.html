@@ -5,11 +5,11 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>treesifter • treesiftr</title>
+<title>treesifter GUI • treesiftr</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="treesifter">
+<script src="../pkgdown.js"></script><meta property="og:title" content="treesifter GUI">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
@@ -55,13 +55,10 @@
       <a href="../articles/00-Instuctor-Guide.html">treesifter Instructor's Guide</a>
     </li>
     <li>
-      <a href="../articles/01-treesiftr.html">treesifter</a>
+      <a href="../articles/01-treesiftr.html">treesifter GUI</a>
     </li>
     <li>
       <a href="../articles/02-treesiftr-advanced.html">treesifter advanced</a>
-    </li>
-    <li>
-      <a href="../articles/Untitled.html">treesiftr: An R package and server for viewing phylogenetic trees and data</a>
     </li>
   </ul>
 </li>
@@ -78,8 +75,9 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>treesifter</h1>
+      <h1>treesifter GUI</h1>
             
+            <h4 class="date">2019-01-02</h4>
       
       
       <div class="hidden name"><code>01-treesiftr.Rmd</code></div>
@@ -110,9 +108,9 @@
 <p>There are also two checkboxes. Leave these unchecked until otherwise noted.</p>
 <p>treesiftr works by subsetting a phylogenetic matrix by user input. Then, a <a href="#glossary">parsimony tree</a> is constructed in Phangorn <span class="citation">(Schliep 2011, Schliep2017)</span> from the user-defined subset. The tree is <a href="#glossary">scored</a> under both parsimony and Lewis’ Mk model <span class="citation">(Lewis 2001)</span> for discrete character data. The data and tree are then visualized using ggtree <span class="citation">(Yu et al. 2017)</span>, based upon the ggplot2 package <span class="citation">(Wickham 2016)</span>. This application makes use of Shiny to provide a graphical interface, but there is a second included tutorial for more experienced users of the R statistical language.</p>
 </div>
-<div id="parsimony-questions" class="section level2">
+<div id="questions" class="section level2">
 <h2 class="hasAnchor">
-<a href="#parsimony-questions" class="anchor"></a>Parsimony Questions</h2>
+<a href="#questions" class="anchor"></a>Questions</h2>
 <ol style="list-style-type: decimal">
 <li><p>Visualize characters 1 and 2. What is the parsimony score for this character set? Click “Do you want to print the <a href="#glossary">parsimony score?</a>” in the interface to check your answer.</p></li>
 <li><p>Visualize characters 2 and 3. What <a href="#glossary">monophyletic</a> group from tree 1 is no longer on this tree?</p></li>
@@ -175,7 +173,7 @@
 <a href="#introduction">Introduction</a><ul class="nav nav-pills nav-stacked">
 <li><a href="#the-fossil-bear-matrix">The fossil bear matrix</a></li>
       <li><a href="#treesiftr">treesiftr</a></li>
-      <li><a href="#parsimony-questions">Parsimony Questions</a></li>
+      <li><a href="#questions">Questions</a></li>
       <li><a href="#glossary">Glossary</a></li>
       <li><a href="#references">References</a></li>
       </ul>

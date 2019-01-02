@@ -10,8 +10,12 @@ bibliography: bibliography.bib
 ## Introduction
 
 Estimating phylogenetic trees is crucial in many areas of evolutionary biology.
-However, visualizing the relationship between data and trees is not intutive. To assist with visualizing this relationship, I have created treesiftR, 
-an R package [@R] that takes subsets of data from a phylogenetic matrix, generates a tree under parsimony, and scores that tree under both the likelihood and parsimony criteria. The output of the package is a visualization or set of visualizations of a tree and characters. Also included is a [Shiny application](https://wrightaprilm.shinyapps.io/treesiftr_app/) [@shiny] that can be run locally or used via the web without installing any R packages or having knowledge of R.
+However, visualizing the relationship between data and trees is not intutive. To assist with visualizing this relationship, I have created [treesiftR](https://wrightaprilm.github.io/treesiftr/), 
+an R package [@R] that takes subsets of data from a phylogenetic matrix, generates a tree under parsimony, and scores that tree under both the likelihood and parsimony criteria. The output of the package is a visualization or set of visualizations of a tree and characters. Also included is a [Shiny application](https://wrightaprilm.shinyapps.io/treesiftr_app/) [@shiny] that can be run locally or used via the web without installing any R packages or having knowledge of R. 
+
+If you are interested in treesiftr, take a look at my [instructor's
+guide](https://wrightaprilm.github.io/treesiftr/articles/00-Instructor-Guide.html) 
+for more information (PDF also available [here](https://github.com/wrightaprilm/treesiftr/blob/master/vignettes/00-Instuctor-Guide.pdf)) about adopting this module.
 
 ### Target Audience
 
@@ -26,7 +30,7 @@ worksheet, and a sample slide deck is included in the `inst/slides` directory.
 Currently, treesiftr can be installed via the devtools ```install_github```
 function [@devtools]. 
 
-```{r}
+```{r eval=FALSE}
 devtools::install_github("wrightaprilm/treesiftr")
 ```
 
@@ -34,6 +38,7 @@ devtools::install_github("wrightaprilm/treesiftr")
 
 ```{r setup}
 knitr::opts_chunk$set(echo = TRUE)
+library(ape)
 library(treesiftr)
 library(phangorn)
 library(alignfigR)
@@ -48,7 +53,6 @@ the phylogenetic matrix that we would like to visualize. This is performed via a
 
 ```{r message=FALSE,  warning=FALSE} 
 # Locate package data
-```{r message=FALSE} 
 fdir <- system.file("extdata", package = "treesiftr")
 aln_path <- file.path(fdir, "bears_fasta.fa")
 bears <- read_alignment(aln_path)

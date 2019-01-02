@@ -1,5 +1,8 @@
-pandoc: 2.2.1
+pandoc: 2.2.2.1
 pkgdown: 1.1.0
 pkgdown_sha: ~
-articles: []
+articles:
+  00-Instuctor-Guide: 00-Instuctor-Guide.html
+  01-treesiftr: 01-treesiftr.html
+  02-treesiftr-advanced: 02-treesiftr-advanced.html
 
