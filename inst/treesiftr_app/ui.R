@@ -5,6 +5,7 @@ library(ggplot2)
 library(alignfigR)
 library(Biostrings)
 library(phangorn)
+library(shinyBS)
 
 
 data(bears)
@@ -18,36 +19,64 @@ ui <- fluidPage(
   sidebarLayout(
 
     # Sidebar panel for inputs ----
-    sidebarPanel(
-
-      # Input: Slider for the number of bins ----
-      numericInput(inputId = "min_val",
+   sidebarPanel("Below, indicate at which characters you would like to begin 
+                 visualization, and how many characters to visualize.
+                 Mouse over options and tree for further information.",
+        
+    
+      popify(el = numericInput(inputId = "min_val",
                   label = "First character to visualize:",
                   min = 1,
                   max = 61,
-                  value = 3),
-      numericInput(inputId = "step_val",
-                   label = "Number to visualize (max 5):",
+                  value = 1),
+              title = "Characters",
+              content = "Character at which to begin visualizing data. For \\
+                         example, to begin visualizing from the fifth character \\
+                         in the matrix, enter `5`",
+              trigger = "hover"
+             ),
+      
+      popify(el = numericInput(inputId = "step_val",
+                   label = "Number of characters to visualize (max 5):",
                    min = 2,
                    max = 5,
                    value = 3),
+             title = "Number of Characters",
+             content = "Number of Characters from the matrix to visualize. For \\
+                        example, to visualize 3 characters, choose `3`",
+             trigger = "hover"
+      ),
 
-
-  checkboxInput(inputId = "pscore",
-                label = "Do you want to print the parsimony score?",
-                value = FALSE,
-                width = NULL),
+      popify(el = checkboxInput(inputId = "pscore",
+                                label = "Print the parsimony score?",
+                                value = FALSE,
+                                width = NULL),
+             title = "Parsimony or likelihood score",
+             content = "The parsimony score or the likelihood score under the \\
+                        Mk model of morphological evolution, for the visualized \\
+                       characters along the visualized tree, as calculated in \\
+                       Phangorn",
+             trigger = "hover"
+      ),
+      
   checkboxInput(inputId = "lscore",
-                label = "Do you want to print the likelihood score under the Mk
+                label = "Print the likelihood score under the Mk
                         model?",
                 value = FALSE,
                 width = NULL)
 ),
 
+
+
     # Main panel for displaying outputs ----
     mainPanel(
 
-      plotOutput(outputId = "treeAlign")
+      popify(el = plotOutput(outputId = "treeAlign"),
+             title = "Dataset",
+             content = "The dataset is from Abella et al. 2012  \\
+             https://doi.org/10.1371/journal.pone.0048985",
+             trigger = "hover"
+      )
 
     )
   )
