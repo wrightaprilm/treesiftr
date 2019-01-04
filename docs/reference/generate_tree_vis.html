@@ -122,7 +122,7 @@
     </div>
 
     <pre class="usage"><span class='fu'>generate_tree_vis</span>(<span class='no'>sample_df</span>, <span class='no'>alignment</span>, <span class='no'>tree</span>, <span class='no'>phy_mat</span>, <span class='kw'>pscore</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>lscore</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>lstates</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>pstates</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+  <span class='kw'>lscore</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>random_tree</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>pstates</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -150,6 +150,15 @@
     <tr>
       <th>lscore</th>
       <td><p>Optional boolean specifying if you would like figures annotated with likelihood score of tree given data under the Mk model. Default FALSE.</p></td>
+    </tr>
+    <tr>
+      <th>random_tree</th>
+      <td><p>Optional boolean specifying if you would like to view a vector
+of random trees</p></td>
+    </tr>
+    <tr>
+      <th>pstates</th>
+      <td><p>View ancestral state estimations on the tree. Default FALSE.</p></td>
     </tr>
     </table>
     
