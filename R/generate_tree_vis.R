@@ -52,23 +52,24 @@ generate_tree_vis <- function(sample_df, alignment, tree, phy_mat,
         fit <- phangorn::pml(p_tr, data = small_mat)
         tr$lik <- fit$logLik
     }
-    
+
     if (pscore == TRUE) {
         ps <- as.character(tr$pars2)
         plab <- paste("PScore ", ps)
-        pl <- pl + ggplot2::ggtitle(paste0(char_set[1],"\n",char_set[2], "\n", plab))
+        pl <- pl + ggplot2::ggtitle(paste0(chars[1],"\n", chars[2], "\n", plab))
     }
     if (lscore == TRUE) {
       l <- as.character(tr$lik)
       lab <- paste("LScore under Mk model ", l)
-      pl <- pl + ggplot2::ggtitle(paste0(char_set[1],"\n",char_set[2], "\n", lab))
+      pl <- pl + ggplot2::ggtitle(paste0(chars[1],"\n", chars[2], "\n", lab))
     }
     if (lscore & pscore == TRUE) {
-      pl <- pl + ggplot2::ggtitle(paste0(char_set[1],"\n",char_set[2], "\n", lab,
+      pl <- pl + ggplot2::ggtitle(paste0(chars[1],"\n", chars[2], "\n", lab,
                                 "\n", plab))
     }
 
-    vis_vec[[i]] <- pl
   }
+  vis_vec[[i]] <- pl
+  
   return(vis_vec)
 }
