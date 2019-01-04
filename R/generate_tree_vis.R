@@ -32,20 +32,19 @@ generate_tree_vis <- function(sample_df, alignment, tree, phy_mat,
   sample_df <- check_subs(sample_df = sample_df, phy_mat = phy_mat)
   for (i in 1:nrow(sample_df)){
     if (random_tree == FALSE){
-    char_set <- c(sample_df$starting_val[i], sample_df$stop_val[i])
+    chars <- c(sample_df$starting_val[i], sample_df$stop_val[i])
     tr <- ape::as.phylo(generate_tree_vec(phy_mat, sample_df$starting_val[i],
                                      sample_df$stop_val[i], tree))
-    pl <- ggtree::msaplot(p=ggtree::ggtree(tr), fasta=alignment, window = char_set,                                    width = .1, offset = 9 ) + ggtree::geom_tiplab() +
-                          ggplot2::ggtitle(paste0(char_set[1],"\n",char_set[2]))
+    pl <- ggtree::msaplot(p=ggtree::ggtree(tr), fasta=alignment, window = chars,                                    width = .1, offset = 9 ) + ggtree::geom_tiplab() +
+                          ggplot2::ggtitle(paste0(chars[1],"\n",chars[2]))
     }
     
     if (random_tree == TRUE) {
-        char_set <- c(sample_df$starting_val[i], sample_df$stop_val[i])
+        chars <- c(sample_df$starting_val[i], sample_df$stop_val[i])
         tr <- ape::as.phylo(ape::rtree(18, tree$tip.label, rooted= TRUE))
-        pl <- ggtree::msaplot(p=ggtree::ggtree(tr), fasta=alignment, window = char_set,                                    width = .1, offset = 9 ) + ggtree::geom_tiplab() +
-          ggplot2::ggtitle(paste0(char_set[1],"\n",char_set[2]))      
-        small_mat <- subset(phy_mat, select=char_set[1]:char_set[2],
-                            site.pattern=FALSE)
+        pl <- ggtree::msaplot(p=ggtree::ggtree(tr), fasta=alignment, window = chars,                                    width = .1, offset = 9 ) + ggtree::geom_tiplab() +
+          ggplot2::ggtitle(paste0(chars[1],"\n",chars[2]))      
+        small_mat <- subset(phy_mat, select=chars[1]:chars[2], site.pattern=FALSE)
         p_score <- phangorn::fitch(tr, small_mat)
         tr$pars2 <- p_score
         print(tr$pars2)
