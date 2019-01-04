@@ -165,6 +165,16 @@ this purpose. The trees, which were generated with `ggtree` (Yu et al.
 to a vector, which can be displayed in its entirety, or subsetted to
 look at specific trees.
 
+## Random Trees
+
+You can also map the characters to a random tree, and count the parsimony steps 
+or score the characters under likelihood on this tree.
+
+``` r
+output_vector <- generate_tree_vis(sample_df = sample_df, alignment =                                                     aln_path, tree = tree, phy_mat = bears, 
+                            random_tree = TRUE)
+```
+
 References
 ----------
 

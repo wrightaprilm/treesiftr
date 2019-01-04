@@ -26,7 +26,8 @@ server <- function(input, output) {
   print(sample_df)
 
  for (i in 1:length(sample_df$starting_val)){
-    vis_vec <- generate_tree_vis(sample_df = sample_df, alignment = aln_path, tree = tree, phy_mat = bears, pscore = input$pscore, lscore = input$lscore)
+    vis_vec <- generate_tree_vis(sample_df = sample_df, alignment = aln_path, tree = tree, phy_mat = bears, pscore = input$pscore, lscore = input$lscore, random_tree = 
+                                   input$random_tree)
     print(vis_vec)
     }
 

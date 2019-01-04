@@ -23,10 +23,11 @@ tree_dat <-function(tree, phy_mat, start, stop, pscore = FALSE, lscore = FALSE){
   small_mat <- subset(phy_mat, select=char_set[1]:char_set[2],
                       site.pattern = FALSE)
   if (lscore == TRUE){
-    tree <- multi2di(tree)
-    tree <- acctran(tree, data = small_mat)
-    fit <- pml(tree, data = small_mat)
+    tree <- ape::multi2di(tree)
+    tree <- phangorn::acctran(tree, data = small_mat)
+    fit <- phangorn::pml(tree, data = small_mat)
     tree$lik <- fit$logLik
   }
+
   return(tree)
 }

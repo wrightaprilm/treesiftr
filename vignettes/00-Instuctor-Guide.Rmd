@@ -176,7 +176,7 @@ function. treesiftr has a number of required packages. Install and load the belo
 
 > _Instructor's Note_: This does not auto-execute in the instructor's guide.
 ```{r setup, message=FALSE}
-devtools::install_github("wrightaprilm/treesiftr")
+#devtools::install_github("wrightaprilm/treesiftr")
 library(treesiftr)
 library(phangorn)
 library(alignfigR)

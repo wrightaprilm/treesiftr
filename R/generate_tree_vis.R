@@ -6,9 +6,12 @@
 #' @param phy_mat Phylogenetic matrix to be subsampled
 #' @param pscore Optional boolean specifying if you would like figures annotated with parsimony score of tree given data. Default FALSE.
 #' @param lscore Optional boolean specifying if you would like figures annotated with likelihood score of tree given data under the Mk model. Default FALSE.
+#' @param random_tree Optional boolean specifying if you would like to view a vector
+#' of random trees
 #' @return vector Vector of ggplot2 objects
 #' @importFrom phangorn phyDat
 #' @importFrom ape as.phylo
+#'@importFrom ape rtree
 #' @importFrom ggtree msaplot
 #' @importFrom ggtree ggtree
 #' @importFrom ggplot2 ggtitle
@@ -22,25 +25,39 @@
 #' @export
 
 generate_tree_vis <- function(sample_df, alignment, tree, phy_mat,
-                              pscore = FALSE, lscore = FALSE){
+                              pscore = FALSE, lscore = FALSE, random_tree = FALSE,
+                              pstates = FALSE){
+
   vis_vec <- list()
   phy_mat <- phangorn::phyDat(phy_mat, levels = c(0, 1), type = "USER")
   sample_df <- check_subs(sample_df = sample_df, phy_mat = phy_mat)
   for (i in 1:nrow(sample_df)){
+    if (random_tree == FALSE){
     char_set <- c(sample_df$starting_val[i], sample_df$stop_val[i])
     tr <- ape::as.phylo(generate_tree_vec(phy_mat, sample_df$starting_val[i],
                                      sample_df$stop_val[i], tree))
     pl <- ggtree::msaplot(p=ggtree::ggtree(tr), fasta=alignment, window = char_set,                                    width = .1, offset = 9 ) + ggtree::geom_tiplab() +
                           ggplot2::ggtitle(paste0(char_set[1],"\n",char_set[2]))
+    }
+    else {
+        print("Random Tree")
+        char_set <- c(sample_df$starting_val[i], sample_df$stop_val[i])
+        tr <- ape::as.phylo(ape::rtree(18, tree$tip.label))
+        pl <- ggtree::msaplot(p=ggtree::ggtree(tr), fasta=alignment, window = char_set,                                    width = .1, offset = 9 ) + ggtree::geom_tiplab() +
+          ggplot2::ggtitle(paste0(char_set[1],"\n",char_set[2]))      
+        tr <- phangorn::optim.parsimony(tree=tree, data = small_mat)
+        p_score <- phangorn::fitch(tr, small_mat)
+        tr$pars2 <- p_score
+        p_tr <- phangorn::acctran(tr, data = small_mat)
+        fit <- phangorn::pml(p_tr, data = small_mat)
+        tr$lik <- fit$logLik
+    }
     if (pscore == TRUE) {
-#        tr <- tree_dat(tr, phy_mat, sample_df$starting_val[i], sample_df$stop_val[i],                      pscore = TRUE)
         ps <- as.character(tr$pars2)
         plab <- paste("PScore ", ps)
         pl <- pl + ggplot2::ggtitle(paste0(char_set[1],"\n",char_set[2], "\n", plab))
     }
     if (lscore == TRUE) {
-#      tr <- tree_dat(tr, phy_mat, sample_df$starting_val[i],
-#                     sample_df$stop_val[i], lscore = TRUE)
       l <- as.character(tr$lik)
       lab <- paste("LScore under Mk model ", l)
       pl <- pl + ggplot2::ggtitle(paste0(char_set[1],"\n",char_set[2], "\n", lab))
@@ -49,6 +66,7 @@ generate_tree_vis <- function(sample_df, alignment, tree, phy_mat,
       pl <- pl + ggplot2::ggtitle(paste0(char_set[1],"\n",char_set[2], "\n", lab,
                                 "\n", plab))
     }
+
     vis_vec[[i]] <- pl
   }
   return(vis_vec)

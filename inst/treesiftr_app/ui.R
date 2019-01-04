@@ -38,7 +38,7 @@ ui <- fluidPage(
       
       popify(el = numericInput(inputId = "step_val",
                    label = "Number of characters to visualize (max 5):",
-                   min = 2,
+                   min = 1,
                    max = 5,
                    value = 3),
              title = "Number of Characters",
@@ -63,11 +63,22 @@ ui <- fluidPage(
                 label = "Print the likelihood score under the Mk
                         model?",
                 value = FALSE,
-                width = NULL)
-),
+                width = NULL),
 
 
-
+  popify(el = checkboxInput(inputId = "random_tree",
+                          label = "View random set of trees rather than an 
+                                  estimated tree",
+                          value = FALSE,
+                          width = NULL),
+      title = "Random tree",
+      content = "Rather than estimating a tree for the selected characters, \\
+                map the characters to a randomly-generated topology",
+      trigger = "hover"
+  
+  )
+  ),
+  
     # Main panel for displaying outputs ----
     mainPanel(
 
@@ -81,5 +92,6 @@ ui <- fluidPage(
     )
   )
 )
+
 
 

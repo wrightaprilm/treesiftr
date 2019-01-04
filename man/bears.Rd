@@ -3,6 +3,7 @@
 \docType{data}
 \name{bears}
 \alias{bears}
+\alias{bears}
 \alias{phy_mat}
 \alias{tree}
 \title{Dataset of Morphological character for extant and extinct bears.}
