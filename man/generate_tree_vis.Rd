@@ -5,7 +5,7 @@
 \title{Combine trees and phylogenetic matrix data as a ggplot object}
 \usage{
 generate_tree_vis(sample_df, alignment, tree, phy_mat, pscore = FALSE,
-  lscore = FALSE, random_tree = FALSE, pstates = FALSE)
+  lscore = FALSE, random_tree = FALSE)
 }
 \arguments{
 \item{sample_df}{Dataframe specifying how to subsample phylogenetic matrix}
@@ -22,8 +22,6 @@ generate_tree_vis(sample_df, alignment, tree, phy_mat, pscore = FALSE,
 
 \item{random_tree}{Optional boolean specifying if you would like to view a vector
 of random trees}
-
-\item{pstates}{View ancestral state estimations on the tree. Default FALSE.}
 }
 \value{
 vector Vector of ggplot2 objects

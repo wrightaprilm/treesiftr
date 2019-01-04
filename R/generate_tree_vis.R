@@ -25,8 +25,7 @@
 #' @export
 
 generate_tree_vis <- function(sample_df, alignment, tree, phy_mat,
-                              pscore = FALSE, lscore = FALSE, random_tree = FALSE,
-                              pstates = FALSE){
+                              pscore = FALSE, lscore = FALSE, random_tree = FALSE){
 
   vis_vec <- list()
   phy_mat <- phangorn::phyDat(phy_mat, levels = c(0, 1), type = "USER")
@@ -39,19 +38,22 @@ generate_tree_vis <- function(sample_df, alignment, tree, phy_mat,
     pl <- ggtree::msaplot(p=ggtree::ggtree(tr), fasta=alignment, window = char_set,                                    width = .1, offset = 9 ) + ggtree::geom_tiplab() +
                           ggplot2::ggtitle(paste0(char_set[1],"\n",char_set[2]))
     }
-    else {
-        print("Random Tree")
+    
+    if (random_tree == TRUE) {
         char_set <- c(sample_df$starting_val[i], sample_df$stop_val[i])
-        tr <- ape::as.phylo(ape::rtree(18, tree$tip.label))
+        tr <- ape::as.phylo(ape::rtree(18, tree$tip.label, rooted= TRUE))
         pl <- ggtree::msaplot(p=ggtree::ggtree(tr), fasta=alignment, window = char_set,                                    width = .1, offset = 9 ) + ggtree::geom_tiplab() +
           ggplot2::ggtitle(paste0(char_set[1],"\n",char_set[2]))      
-        tr <- phangorn::optim.parsimony(tree=tree, data = small_mat)
+        small_mat <- subset(phy_mat, select=char_set[1]:char_set[2],
+                            site.pattern=FALSE)
         p_score <- phangorn::fitch(tr, small_mat)
         tr$pars2 <- p_score
+        print(tr$pars2)
         p_tr <- phangorn::acctran(tr, data = small_mat)
         fit <- phangorn::pml(p_tr, data = small_mat)
         tr$lik <- fit$logLik
     }
+    
     if (pscore == TRUE) {
         ps <- as.character(tr$pars2)
         plab <- paste("PScore ", ps)

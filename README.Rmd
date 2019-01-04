@@ -1,8 +1,5 @@
 ---
 title: "README.Rmd"
-output:
-  md_document:
-    variant: markdown_github
 bibliography: bibliography.bib
 ---
   ![logo](inst/images/treesiftR.png)
@@ -46,6 +43,7 @@ library(phangorn)
 library(alignfigR)
 library(ggtree)
 library(ggplot2)
+data(bears)
 ```
 
 ## Operation
@@ -89,8 +87,8 @@ or score the characters under likelihood on this tree.
 
 
 ```{r message=FALSE,  warning=FALSE}
-output_vector <- generate_tree_vis(sample_df = sample_df, alignment =                                                     aln_path, tree = tree, phy_mat = bears,
-                             random_tree = TRUE)
+output_vector <- generate_tree_vis(sample_df = sample_df, alignment =                                                    aln_path, tree = tree, phy_mat = bears,
+                    random_tree = TRUE)
 output_vector
 ```
 

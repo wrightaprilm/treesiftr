@@ -11,9 +11,9 @@
 
 generate_tree_vec <- function(phy_mat, start, stop, tree){
   phy_mat <- phangorn::phyDat(phy_mat, levels = c(0, 1), type = "USER")
-  charset <- c(start, stop)
+  char_set <- c(start, stop)
   message("Generating tree for charset:", charset)
-  small_mat <- subset(phy_mat, select=charset[1]:charset[2],
+  small_mat <- subset(phy_mat, select=char_set[1]:char_set[2],
                       site.pattern=FALSE)
   tr <- phangorn::optim.parsimony(tree=tree, data = small_mat)
   p_score <- phangorn::fitch(tr, small_mat)
