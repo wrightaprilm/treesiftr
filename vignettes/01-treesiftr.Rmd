@@ -1,12 +1,10 @@
 ---
 title: "treesifter GUI"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteEngine{knitr::knitr}
-  %\VignetteIndexEntry{treesiftr GUI}
-  %\usepackage[UTF-8]{inputenc}
+output: pdf_document
 bibliography: ../bibliography.bib
+vignette: |
+  %\VignetteEngine{knitr::knitr} %\VignetteIndexEntry{treesiftr GUI} %\usepackage[UTF-8]{inputenc}
 ---
 # Introduction
 
@@ -40,24 +38,28 @@ treesiftr works by subsetting a phylogenetic matrix by user input. Then, a [pars
 ## Questions
 
 1. Visualize characters 1 and 2. What is the parsimony score for this character set? Click "Do you want to print the [parsimony score?](#glossary)" in the interface to check your answer.
+Uncheck the parsimony score option when you have completed this question.
 
-2. Visualize characters 2 and 3. What [monophyletic](#glossary) group from tree 1 is no longer on this tree? 
+2. Visualize character set 2-3 and 3-4. What [monophyletic](#glossary) group from the 
+tree for characters 2-3 is no longer on the tree for characters 3-4? 
 
-3. What is the parsimony score of the 31-34 character set? Click "Do you want to print the parsimony score?" in the infterface to check your answer.
+3. Visualize characters 1 and 2. This time, click the "View random set of trees rather than an estimated tree" button in the interface. Are the parsimony scores larger or smaller than those of the character on an estimated tree? Does this make sense to you? Why? Remember to uncheck
+this box before continuing.
  
-4. Which character, 8, 9 or 10, represents a [reversal](#glossary)?
+4. View a tree of characters 8 - 10. Which character, 8, 9 or 10, represents a [reversal](#glossary)?
 
 5. What information would we need to decide if the "1" state possesed by _Zaragocyon_daamsi_  in character 52 is an [autapomorphy](#glossary)? 
 
-6. Click the switch that says "Do you want to print the likelihood score under the Mk model?" _and_ the switch that says "Do you want to print the parsimony score?". Do all characters with the same parsimony score have the same likelihood score? 
+6. Click the switch that says "Do you want to print the likelihood score under the Mk model?" _and_ the switch that says "Do you want to print the parsimony score?". Does the character set 8, 9, and 10 have the same parsimony score as the character set 9, 10, and 11? How about the same likelihood score? 
 
 7. Compare characters 46-49 and 47-50. Why does set 47-50 have a better likelihood than 46-49? 
 
 8. What is the relationship between the likelihood score and increasing the number of characters visualized? 
 
-9. What is the minimum number adding a character can add to the parsimony score?
+9. What is the minimum number adding a parsimony-informative character can add to the parsimony score?
 
-10. These trees are fully resolved. Based on your exploration of the data, does this degree of resolution make sense?
+10. These trees are fully resolved. Based on your exploration of the data, does this degree of resolution make sense? Take a look at characters 1-3, for example. Does displaying
+a fully resolved tree make sense for these characters?
 
 ## Glossary
 
@@ -82,7 +84,8 @@ _Monophyletic_: A group on a phylogeny of an ancestor and all of its descendents
 
 _Parsimony Score_: The number of changes implied by a character on a tree.
 
-_Reversal_: A change from the derived state back to the ancestral state.
+_Resolved_: A node that is bifucating, leaving two descendent lineages.
 
+_Reversal_: A change from the derived state back to the ancestral state.
 
 ## References

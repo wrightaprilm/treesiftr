@@ -89,9 +89,12 @@ treesiftr works by subsetting a phylogenetic matrix by user input. Then, a [pars
 ![Question Two Answer](img/Q2.png)
 
 
-3. What is the parsimony score of the 31-34 character set? Click "Do you want to print the parsimony score?" in the infterface to check your answer.
+3. Visualize characters 1 and 2. This time, click the "View random set of trees rather than an estimated tree" button in the interface. Are the parsimony scores larger or smaller than those of the character on an estimated tree? Does this make sense to you? Why? Remember to uncheck
+this box before continuing. 
  
-> _Instructor's Note:_ The answer is 7. The output you should see is below.
+> _Instructor's Note:_ They should be larger. Parsimony estimation will favor the shortest tree
+while no such criteria is applied to a random tree. Sample output is below, though the 
+exact numbers and distribution will vary.
 ![Question Three Answer](img/Q3.png)
 
 4. Which character, 8, 9 or 10, represents a [reversal](#glossary)? 
@@ -108,7 +111,7 @@ reversal.
 > _Instructor's Note:_ To make this decision, we would want to know if there are other
 > bears that are not sampled on this tree that posess this character. 
 
-6. Click the switch that says "Do you want to print the likelihood score under the Mk model?" _and_ the switch that says "Do you want to print the parsimony score?". Do all characters with the same parsimony score have the same likelihood score? 
+6. Click the switch that says "Do you want to print the likelihood score under the Mk model?" _and_ the switch that says "Do you want to print the parsimony score?". Does the character set 8, 9, and 10 have the same parsimony score as the character set 9, 10, and 11? How about the same likelihood score?
 
 > _Instructor's Notes:_ It is possible for characters with the same number of parsimony  steps to have different likelihood scores.
 
@@ -121,7 +124,7 @@ reversal.
 
 > Instructor's Notes: The likelihood should become more negative (less likely)
 
-9. What is the minimum number adding a character can add to the parsimony score?
+9. What is the minimum number adding a parsimony-informative character can add to the parsimony score?
 
 > Instructor's Notes: 1
 
@@ -175,6 +178,9 @@ Currently, treesiftr can be installed via the devtools ```install_github```
 function. treesiftr has a number of required packages. Install and load the below. 
 
 > _Instructor's Note_: This does not auto-execute in the instructor's guide.
+[phangorn](https://cran.r-project.org/web/packages/phangorn/index.html), [alignfigr](https://cran.r-project.org/web/packages/alignfigR/index.html), and [ggplot2](https://ggplot2.tidyverse.org/) are all available via [CRAN](https://cran.r-project.org/).
+[ggtree](https://bioconductor.org/packages/release/bioc/html/ggtree.html) is available via [bioconductor](https://www.bioconductor.org/). For information on installing
+bioconductor packages, see [here](https://www.bioconductor.org/install/). 
 ```{r setup, message=FALSE}
 #devtools::install_github("wrightaprilm/treesiftr")
 library(treesiftr)
@@ -238,25 +244,29 @@ output_vector
 > _Instructor's Note:_ The answer is two, as viewed in the first visualization in
 the vector.
 
-2. Visualize characters 2 and 3. What [monophyletic](#glossary) group from the tree of 
-characters 1 and 2 is no longer on this tree? 
+2. Visualize character set 2-3 and 3-4. What [monophyletic](#glossary) group from the 
+tree for characters 2-3 is no longer on the tree for characters 3-4? 
 
-> _Instructor's Note:_ The answer is _Ursavus brevirhinus_, _Ballusia elmensis_,
-> and _Ursavus primaevus_. _Ursavus primaevus_ is no longer sister to _Ursavus      brevirhinus_ and _Ballusia elmensis_ on the tree of character 2-3.
+> _Instructor's Note:_ The answer is _Ursavus brevirhinus_ and _Ballusia elmensis_.
+This clade is broken up on the tree for characters 3-4, in which  _Ballusia elmensis_
+is sister to _Zaragocyon_daamsi_.
 
-3. What is the parsimony score of the 31-34 character set? 
- 
-> _Instructor's Note:_ The answer is 7. This can be checked like so:
+3. Visualize characters 1 and 2. This time, click the "View random set of trees rather than an estimated tree" button in the interface. Are the parsimony scores larger or smaller than those of the character on an estimated tree? Does this make sense to you? Why?
+
+> _Instructor's Note:_ They should be larger. Parsimony estimation will favor the shortest tree
+while no such criteria is applied to a random tree. This can be checked like so: 
 
 ```{r message=FALSE, warning=FALSE}
 sample_df <- generate_sliding(bears, start_char = 31, stop_char = 32, steps = 3)
 
 output_vector <- generate_tree_vis(sample_df = sample_df, alignment =                                                     aln_path, tree = tree, phy_mat = bears,
-                                   pscore = TRUE)
+                      pscore = TRUE, random_tree = TRUE)
 output_vector[1]
 ```
  
-4. Which character, 8, 9 or 10, represents a [reversal](#glossary) from a [derived](#glossary) state to [ancestral](#glossary)?
+ 
+ 
+4. View a tree of characters 8 - 10. Which character, 8, 9 or 10, represents a [reversal](#glossary) from a [derived](#glossary) state to [ancestral](#glossary)?
 
 > _Instructor's Note:_ The root of the tree likely blue, with a change to brown on 
 the branch leading to _Tremarctos_, _Melursus_, _Helarctos_, and _Ursus_.
@@ -316,16 +326,18 @@ output_vector
 number of characters visualized? 
 > Instructor's Notes: The likelihood should become more negative (less likely)
 
-9. What is the minimum number adding a character can add to the parsimony score?
+9. What is the minimum number adding a parsimony-informative character can add to the parsimony score?
 
 > Instructor's Notes: 1
 
 10. These trees are fully resolved. Based on your exploration of the data, does 
-this degree of resolution make sense?
+this degree of resolution make sense? Take a look at characters 1-3, for example. 
+Does displaying a fully resolved tree make sense for these characters?
 
 > Instructor's Notes: For some trees, we can see that there is _no_ character data
 supporting the grouping. Parsimony software generally displays fully-resolved trees - 
-this may be misleading if little to no data support the grouping!
+this may be misleading if little to no data support the grouping! In our case, we're
+seeing strong influence of the starting tree.
 
 ## Glossary
 
@@ -350,7 +362,11 @@ _Monophyletic_: A group on a phylogeny of an ancestor and all of its descendents
 
 _Parsimony Score_: The number of changes implied by a character on a tree.
 
+_Resolved_: A node that is bifucating, leaving two descendent lineages.
+
 _Reversal_: A change from the derived state back to the ancestral state.
+
+
 
 ## References
 

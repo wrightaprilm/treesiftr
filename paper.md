@@ -17,7 +17,7 @@ bibliography: bibliography.bib
 
 ## Summary
 
-treesiftr is an R package [@R] and associated Shiny [@shiny] [application](https://wrightaprilm.shinyapps.io/treesiftr_app/) for visualizing the relationship between phylogenetic trees and the underlying data used to estimate them. treesiftr works by subsetting a phylogenetic matrix according to user-provided input about
+treesiftr is a Shiny [@shiny] [application](https://wrightaprilm.shinyapps.io/treesiftr_app/) for visualizing the relationship between phylogenetic trees and the underlying data used to estimate them. It can also be used in RStudio [@RStudio] or at the command line as an R package [@R]. treesiftr works by subsetting a phylogenetic matrix according to user-provided input about
 which characters to visualize. A maximum parsimony tree is then estimated from each data subset. Maximum parsimony was chosen for speed and analytical simplicity. Under the parsimony optimality criterion, the preferred tree is the one that suggests the fewest evolutionary steps, or character changes over evolutionary history. The tree is scored under both parsimony and  Lewis' Mk model [@Lewis2001], a maximum likelihood model for estimating phylogeny from 
 discrete character data. The data and tree are then visualized using ggtree [@ggtree], based upon the ggplot2 [@ggplot2] package. Expected outputs are the same whether the learner is interacting via the GUI or the RStudio interface; however, the RStudio interface does have additional options not available in the GUI. 
 
@@ -33,11 +33,13 @@ Once homology is assigned, a phylogeny is estimated from the data. Several optim
 
 ## Statement of Need
 
+Understanding phylogenetic trees is challenging for students [@Baum979, @Meisel2010]. Some of this challenge comes from inherently misunderstanding evolution in pre-Darwinian terms, such as a Platonic 'great chain of being' or as being ladder-like [@rudolph1998, @sandvik]. This is often inherently coupled to the idea of humans being the pinnacle of evolution [@ohara1997]. treesfitr, therefore, by default uses a non-human dataset to decouple tree-thinking from preconceived notions of organismal hierarchy. Students also have difficulty simply reading phylogenetic trees - often reading along the tips of a tree, as opposed to looking at the internal nodes [@Baum979, @Meisel2010]. To counter this misconception, treesiftr continuously estimates new phylogenies, moving both tips and nodes. This causes students to have to continually re-evaluate the tree and the information on it [@meir2007].
+
 There are many  phylogenetic tree viewers on the market such as [FigTree](http://tree.bio.ed.ac.uk/software/figtree/),
 IcyTree [@icytree], and Phylogeny.IO [@phylogenyio]. But visualizing the data that underlie a particular tree is still largely accomplished via the Mesquite software [@Maddison2008]. To use Mesquite, one must perform local installs. The software must also be interacted with via a GUI, without the opportunity for learners to practice programmatic skills while learning about phylogenetic trees and data. I wrote this package to allow students to learn about phylogenetic trees and data without performing local installs, and to give the option for students to practice programmatic skills while doing so. 
 
 treesiftr was initially written for use in the [Analytical Paleobiology Workshop](http://www.analytical.palaeobiology.de/) in summer 2018.
-This course is a 30-day paleobiological data predominantly for graduate students. treesiftr was used in the last week of the course,
+This course is an intensive 30-day paleobiological workshop predominantly for graduate students. treesiftr was used in the last week of the course,
 by which time the learners had been working with R via the RStudio application for three weeks. In this setting, the exercise 
 itself took about 45 minutes, and was embedded in a 3-hour lecture block (see below). I also added a web-based GUI for portability, and use in undergraduate biology classrooms. In undergraduate biology classrooms, learners are largely naive with respect to scientific computing, and performing installations on school or personal computers for a single class period may not be feasible. In  particular, I am faculty at Southeastern Louisiana University, which 
  is an institution serving students in a low-income region of a low-income state. Many students do not have reasonable 
