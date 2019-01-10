@@ -40,12 +40,12 @@ treesiftr works by subsetting a phylogenetic matrix by user input. Then, a [pars
 1. Visualize characters 1 and 2. What is the parsimony score for this character set? Click "Do you want to print the [parsimony score?](#glossary)" in the interface to check your answer.
 Uncheck the parsimony score option when you have completed this question.
 
-2. Visualize character set 2-3 and 3-4. What [monophyletic](#glossary) group from the 
+2. Visualize characters 1 and 2. This time, click the "View random set of trees rather than an estimated tree" button in the interface. Are the parsimony scores larger or smaller than those of the character on an estimated tree? Does this make sense to you? Why? Remember to uncheck
+this box before continuing.
+
+3. Visualize character set 2-3 and 3-4. What [monophyletic](#glossary) group from the 
 tree for characters 2-3 is no longer on the tree for characters 3-4? 
 
-3. Visualize characters 1 and 2. This time, click the "View random set of trees rather than an estimated tree" button in the interface. Are the parsimony scores larger or smaller than those of the character on an estimated tree? Does this make sense to you? Why? Remember to uncheck
-this box before continuing.
- 
 4. View a tree of characters 8 - 10. Which character, 8, 9 or 10, represents a [reversal](#glossary)?
 
 5. What information would we need to decide if the "1" state possesed by _Zaragocyon_daamsi_  in character 52 is an [autapomorphy](#glossary)? 

@@ -1,12 +1,10 @@
 ---
 title: "treesifter advanced"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteEngine{knitr::knitr}
-  %\VignetteIndexEntry{treesiftr advanced}
-  %\usepackage[UTF-8]{inputenc}
+output: pdf_document
 bibliography: ../bibliography.bib
+vignette: |
+  %\VignetteEngine{knitr::knitr} %\VignetteIndexEntry{treesiftr advanced} %\usepackage[UTF-8]{inputenc}
 ---
 
 # Introduction
@@ -116,10 +114,7 @@ output_vector <- generate_tree_vis(sample_df = sample_df, alignment =           
                                    pscore = TRUE)
 ```
 
-2. Visualize character set 2-3 and 3-4. What [monophyletic](#glossary) group from the 
-tree for characters 2-3 is no longer on the tree for characters 3-4?
-
-3. Visualize characters 1 and 2. This time, add the flag `random_tree = TRUE`, like so:
+2. Visualize characters 1 and 2. This time, add the flag `random_tree = TRUE`, like so:
 
 ```{r message=FALSE, eval=FALSE, warning=FALSE}
 output_vector <- generate_tree_vis(sample_df = sample_df, alignment =                                                     aln_path, tree = tree, phy_mat = bears,
@@ -127,6 +122,9 @@ output_vector <- generate_tree_vis(sample_df = sample_df, alignment =           
 ```
 Are the parsimony scores larger or smaller than those of the character on an estimated tree?
 Does this make sense to you? Why?
+
+3. Visualize character set 2-3 and 3-4. What [monophyletic](#glossary) group from the 
+tree for characters 2-3 is no longer on the tree for characters 3-4?
  
 4. View a tree of characters 8 - 10. Which character, 8, 9 or 10, represents a [reversal](#glossary) from a [derived](#glossary) state to [ancestral](#glossary)?
 

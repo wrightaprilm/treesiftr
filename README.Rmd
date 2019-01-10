@@ -52,7 +52,8 @@ data(bears)
 ```
 Note: [phangorn](https://cran.r-project.org/web/packages/phangorn/index.html), [alignfigr](https://cran.r-project.org/web/packages/alignfigR/index.html), and [ggplot2](https://ggplot2.tidyverse.org/) are all available via [CRAN](https://cran.r-project.org/).
 [ggtree](https://bioconductor.org/packages/release/bioc/html/ggtree.html) is available via [bioconductor](https://www.bioconductor.org/). For information on installing
-bioconductor packages, see [here](https://www.bioconductor.org/install/). 
+bioconductor packages, see [here](https://www.bioconductor.org/install/).  
+
 ## Operation
 
 The first step to making a treesiftr visualization is to select the subset of 
