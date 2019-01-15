@@ -1,7 +1,7 @@
 Package: treesiftr
 Type: Package
 Title: Visualizing The Relationship Between Phylogeny and Data
-Version: 0.1.0
+Version: 1.0.0
 Authors@R: person("April", "Wright", role = c("aut", "cre"),
 	email = "april.wright@selu.edu")
 Description: R package for building parsimony trees from subsets of characters in a matrix,
