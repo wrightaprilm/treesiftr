@@ -12,7 +12,7 @@ affiliations:
 - name: Southeastern Louisiana University
   index: 1
 date: 31 August 2018
-bibliography: bibliography.bib
+bibliography: paper.bib
 ---
 
 ## Summary
