@@ -1,10 +1,7 @@
 ---
-date: "`r Sys.Date()`"
-output:
-  pdf_document: default
-  html_document:
-    df_print: paged
 title: "treesifter Instructor's Guide"
+date: "`r Sys.Date()`"
+output: pdf_document
 bibliography: ../bibliography.bib
 vignette: |
   %\VignetteEngine{knitr::knitr} %\VignetteIndexEntry{Instructor's Guide} %\usepackage[UTF-8]{inputenc}
@@ -180,7 +177,7 @@ function. treesiftr has a number of required packages. Install and load the belo
 [ggtree](https://bioconductor.org/packages/release/bioc/html/ggtree.html) is available via [bioconductor](https://www.bioconductor.org/). For information on installing
 bioconductor packages, see [here](https://www.bioconductor.org/install/). 
 ```{r setup, message=FALSE}
-#devtools::install_github("wrightaprilm/treesiftr")
+devtools::install_github("wrightaprilm/treesiftr")
 library(treesiftr)
 library(phangorn)
 library(alignfigR)
@@ -215,7 +212,7 @@ This dataframe dispays the start character (the first character that will be vis
 We can then build trees from each subset:
 
 ```{r message=FALSE,  warning=FALSE}
-output_vector <- generate_tree_vis(sample_df = sample_df, alignment =                                                     aln_path, tree = tree, phy_mat = bears)
+output_vector <- generate_tree_vis(sample_df = sample_df, alignment =                                                 aln_path, tree = tree, phy_mat = bears)
 ```
 
 The above code saves the trees to a vector, but does not visualize them. They can
